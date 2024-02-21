@@ -52,4 +52,6 @@ strong {
 img{
   box-sizing: content-box !important;
   width: 100% !important;
+  height: 500px;
+  object-fit: cover;
 }

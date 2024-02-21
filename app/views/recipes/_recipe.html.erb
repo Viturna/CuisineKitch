@@ -1,7 +1,7 @@
 <div id="<%= dom_id recipe %>" class="row mx-4">
-  <div class="col">
+  <div class="col mx-3">
     <img src="<%= recipe.image %>">
-    <h2>Ingrédientssssss</h2>
+    <h2>Ingrédients</h2>
     <div class="ingredient d-flex align-items-center mb-3">
       <div class="circle">
         <span class="inner-circle">
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="col-md-8">
-    <p>Recette créé le <%= recipe.created_at.strftime("%d %B %Y") %></p>
+    <p>Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
     <h1><%= recipe.title %></h1>
     <div class="row">
       <p><%= recipe.description %></p>
