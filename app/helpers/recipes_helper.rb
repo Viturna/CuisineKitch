@@ -8,3 +8,5 @@ def total_time(recipe)
 
   preparation_time + cooking_time + resting_time
 end
+
+
