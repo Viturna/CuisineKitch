@@ -1,0 +1,47 @@
+// custom.scss
+
+body {
+    background-color: #FBF5EF;
+    color: #333231;
+}
+
+header {
+    height: 100px;
+}
+
+p {
+    color: #727272;
+}
+
+h1 {
+    font-size: 70px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+strong {
+    color: #333231;
+}
+
+.form-control{
+    border-radius: 20px;
+    border-color: #010101;
+    min-height: 55px;
+    background-color: #FBF5EF;
+}
+
+.form-control:focus{
+    background-color: #fceddf;
+}
+
+.form-time{
+    width: 240px;
+}
+
+.btn-dark{
+    width: 400px;
+    border-radius: 20px;
+}
+

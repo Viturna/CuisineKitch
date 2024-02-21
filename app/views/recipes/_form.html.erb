@@ -1,3 +1,4 @@
+<div class="mx-4">
 <%= form_with(model: recipe) do |form| %>
   <% if recipe.errors.any? %>
     <div style="color: red">
@@ -11,50 +12,59 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-4">
+    <%= form.label "Titre de la recette", style: "display: block", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Lasagne au chocolat" %>
   </div>
 
-  <div>
-    <%= form.label :preparationtime, style: "display: block" %>
-    <%= form.time_field :preparationtime %>
+  <div class ="d-flex justify-content-between mb-4">
+    <div>
+      <%= form.label "Temps de préparation", style: "display: block", class: "mb-2" %>
+      <%= form.time_field :preparationtime, class: "form-control form-time" %>
+    </div>
+
+    <div>
+      <%= form.label "Temps de cuisson", style: "display: block", class: "mb-2" %>
+      <%= form.time_field :cookingtime, class: "form-control form-time"  %>
+    </div>
+
+    <div>
+      <%= form.label "Temps de repos", style: "display: block", class: "mb-2" %>
+      <%= form.time_field :restingtime, class: "form-control form-time"  %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :cookingtime, style: "display: block" %>
-    <%= form.time_field :cookingtime %>
+  <div class="mb-4">
+    <%= form.label "Description", style: "display: block", class: "mb-2" %>
+    <%= form.text_area :description, class: "form-control", placeholder: "Description de votre recette" %>
   </div>
 
-  <div>
-    <%= form.label :restingtime, style: "display: block" %>
-    <%= form.time_field :restingtime %>
+  <div class="mb-4">
+    <%= form.label "Etape 1", style: "display: block", class: "mb-2" %>
+    <%= form.text_area :step1, class: "form-control", placeholder: "Descriptif de l'étape 1" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="mb-4">
+    <%= form.label "Etape 2", style: "display: block", class: "mb-2" %>
+    <%= form.text_area :step2, class: "form-control", placeholder: "Descriptif de l'étape 2"  %>
   </div>
 
-  <div>
-    <%= form.label :step1, style: "display: block" %>
-    <%= form.text_area :step1 %>
+  <div class="mb-4">
+    <%= form.label "Etape 3", style: "display: block", class: "mb-2" %>
+    <%= form.text_area :step3, class: "form-control", placeholder: "Descriptif de l'étape 3"  %>
+  </div>
+  <div class="mb-4">
+    <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
+    <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image"  %>
   </div>
 
-  <div>
-    <%= form.label :step2, style: "display: block" %>
-    <%= form.text_area :step2 %>
-  </div>
-
-  <div>
-    <%= form.label :step3, style: "display: block" %>
-    <%= form.text_area :step3 %>
-  </div>
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
-  </div>
-  <div>
-    <%= form.submit %>
+  <div class="d-flex align-items-center justify-content-end gap-5">
+    <div>
+      <%= link_to "Annuler", recipes_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+    </div>
+    <div class="ml-4">
+      <%= form.submit "Valider", class: "btn btn-dark btn-lg" %>
+    </div>
   </div>
 <% end %>
+</div>
