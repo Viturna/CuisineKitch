@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cuisine kitch</title>
+    <title>Cuisinekitch</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', 'custom', media: 'all' %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <header>
-    <div class="container-flouid">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <h3>Cuisine Kitch</h3>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-              </li>
-              <li class="nav-item">
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">A propos</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Se connecter</a>
-              </li>
-            </ul>
+      <div class="container-flouid">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+            <a class="navbar-brand" href="/">
+              <h3>Cuisine Kitch</h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <%= link_to "Accueil", recipes_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Nouvelle recette", new_recipe_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">A propos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Se connecter</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
