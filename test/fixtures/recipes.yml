@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  preparationtime: 2024-02-21 09:47:26
+  cookingtime: 2024-02-21 09:47:26
+  restingtime: 2024-02-21 09:47:26
+  description: MyText
+  step1: MyText
+  step2: MyText
+  step3: MyText
+
+two:
+  title: MyString
+  preparationtime: 2024-02-21 09:47:26
+  cookingtime: 2024-02-21 09:47:26
+  restingtime: 2024-02-21 09:47:26
+  description: MyText
+  step1: MyText
+  step2: MyText
+  step3: MyText
