@@ -2,12 +2,19 @@
 a{
   text-decoration: none;
 }
+.green{
+  color: #0B6F21;
+}
+.hanzi{
+  font-family: 'HanziPen TC';
+}
 body {
   background-color: #FBF5EF;
   color: #333231;
+}
+.row{
   padding: 0 5vw;
 }
-
 .container {
   height: 100px;
 }
@@ -98,13 +105,24 @@ img {
 
 
 // Index
-#recipes{
-  background-color: #333231;
-  height: 800px;
+.index-title{
+  font-weight: 700;
+  margin-top: 128px;
+  margin-top: 0;
 }
+#recipes{
+  margin-top: 96px;
+  background-color: #333231;
+  height: 600px;
+}
+#recipes h2{
+  color: #FFF;
+  font-weight: 700;
+}
+
 .card{
   background-size: cover;
-  height: 400px;
+  height: 280px;
 }
 .index-card .card {
   position: relative;
@@ -117,7 +135,7 @@ img {
   left: 0;
   width: 101%;
   height: 101%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .card-body{
   position: absolute;
@@ -138,4 +156,8 @@ img {
 }
 .index-card .tag-text{
   color: #FFF !important;
+}
+.head-title{
+  margin-bottom: 0px;
+  font-size: 24px;
 }
