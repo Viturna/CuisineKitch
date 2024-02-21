@@ -1,46 +1,62 @@
-    <div id="<%= dom_id recipe %>" class="row">
-      <div class="col-md-4">
-        <img width="300px" src="<%= recipe.image %>">
+<div id="<%= dom_id recipe %>" class="row mx-4">
+  <div class="col">
+    <img src="<%= recipe.image %>">
+    <h2>Ingrédients</h2>
+    <div class="ingredient d-flex align-items-center mb-3">
+      <div class="circle">
+        <span class="inner-circle">
+          <svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.0921 13.4493C26.0921 12.6335 27.3346 8.38165 28.5778 7.1392C29.8195 5.89594 28.5778 4.55642 27.3346 4.55642C24.5568 4.55642 19.8799 10.1862 19.8799 13.4493C19.8799 17.5283 24.5568 21.9531 27.3346 21.9531C28.5778 21.9531 29.8195 20.8078 28.5778 19.5645C27.3346 18.3229 26.0921 15.0809 26.0921 13.4493Z" fill="#3B88C3"/>
+            <path d="M7.22168 5.60329C7.22168 3.1184 8.44292 0.632685 9.68536 0.632685C13.4127 0.632685 20.5533 4.56724 21.7958 10.7811C23.039 16.9933 7.22168 5.60329 7.22168 5.60329ZM11.1823 20.5143C12.4248 21.7567 14.9105 23 17.3962 23C19.8811 23 14.8583 19.5818 16.1529 18.0302C17.9322 15.8953 11.1823 20.5143 11.1823 20.5143Z" fill="#3B88C3"/>
+            <path d="M1.55197 17.3045C2.17279 15.4405 1.70697 14.0944 0.619526 12.7492C-0.467922 11.4023 3.77826 11.1959 5.17571 13.06C6.57397 14.9241 9.83631 18.184 6.937 18.1342C4.03687 18.0812 1.55197 17.3045 1.55197 17.3045Z" fill="#333231"/>
+            <path d="M0 13.0313C0.782342 13.7443 5.89245 16.5465 5.84513 17.222C5.79782 17.8975 3.98595 17.1502 3.31211 16.9936C2.10066 16.7154 1.75803 16.5066 1.42192 16.5645C0.736658 16.8264 0.969974 17.5443 1.2245 17.9546C2.44655 20.0846 7.16834 21.7578 11.1445 21.7578C18.0069 21.7578 24.8514 15.5456 24.8514 13.0599C24.8514 10.575 17.2287 4.3611 10.3662 4.3611C3.51932 4.3611 0.00897368 9.30642 0 13.0313Z" fill="#55ACEE"/>
+            <path d="M5.57321 7.73726C5.79048 7.73235 6.00655 7.77089 6.20873 7.85063C6.4109 7.93037 6.59511 8.0497 6.75053 8.20161C6.90596 8.35352 7.02946 8.53495 7.1138 8.73525C7.19815 8.93555 7.24162 9.15068 7.24167 9.36801C7.24173 9.58535 7.19836 9.8005 7.11412 10.0008C7.02988 10.2012 6.90646 10.3827 6.75112 10.5347C6.59577 10.6867 6.41162 10.8061 6.20949 10.8859C6.00735 10.9658 5.7913 11.0044 5.57402 10.9996C5.14772 10.9902 4.74205 10.8142 4.44385 10.5094C4.14565 10.2047 3.97862 9.79523 3.97852 9.36883C3.97841 8.94242 4.14524 8.53292 4.44328 8.22798C4.74133 7.92304 5.14691 7.7469 5.57321 7.73726Z" fill="#333231"/>
+            <path d="M12.1639 18.3262C12.0235 18.3267 11.8853 18.2908 11.7628 18.222C11.6404 18.1533 11.5378 18.054 11.4651 17.9338C11.3924 17.8136 11.352 17.6767 11.348 17.5363C11.3439 17.3959 11.3763 17.2568 11.442 17.1327C12.735 14.6576 13.2514 12.428 11.5676 9.59232C11.4714 9.4071 11.4497 9.19211 11.507 8.99141C11.5642 8.79072 11.6961 8.61952 11.8755 8.51291C12.0549 8.4063 12.2683 8.37236 12.472 8.41804C12.6756 8.46372 12.8541 8.58556 12.9708 8.75859C15.1677 12.459 14.1618 15.4505 12.8875 17.8881C12.8186 18.0204 12.7147 18.1312 12.5871 18.2085C12.4595 18.2857 12.3131 18.3264 12.1639 18.3262Z" fill="#226699"/>
+          </svg>
+        </span>
       </div>
-      <div class="col-md-8">
-        <p>Recette créé le <%= recipe.created_at.strftime("%d %B %Y") %></p>
-        <h1><%= recipe.title %></h1>
-
-        <div class="row">
-          <p><%= recipe.description %></p>
-          <p class="col-md-3">Temps total <strong><%= total_time(recipe) %>min</strong></p>
-          <p class="col-md-3">Préparation <strong><%= recipe.preparationtime.min%>min</strong></p>
-          <p class="col-md-3">Cuisson <strong><%= recipe.cookingtime.min%>min</strong></p>
-          <p class="col-md-3">Repos <strong><%= recipe.restingtime.min%>min</strong></p>
+      <div class="ingredient-box-text d-flex justify-content-between col">
+        <div class="left">
+          <p class="ingredient-title">Poisson blabla 🐟</p>
+          <p class="ingredient-weight">300g</p>
         </div>
-
+        <div class="ml-auto">
+          <p>1</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <p>Recette créé le <%= recipe.created_at.strftime("%d %B %Y") %></p>
+    <h1><%= recipe.title %></h1>
+    <div class="row">
+      <p><%= recipe.description %></p>
+      <p class="col-md-3">Temps total <strong><%= total_time(recipe) %>min</strong></p>
+      <p class="col-md-3">Préparation <strong><%= recipe.preparationtime.min%>min</strong></p>
+      <p class="col-md-3">Cuisson <strong><%= recipe.cookingtime.min%>min</strong></p>
+      <p class="col-md-3">Repos <strong><%= recipe.restingtime.min%>min</strong></p>
+    </div>
     <h2>A savoir avant de commencer</h2>
-    <h2>Recettes</h2>
-
+    <h2>Recette</h2>
     <div class="flex">
-  <div class="step d-flex align-items-center mb-3">
-    <div class="circle">
-      <span class="number">1</span>
+      <div class="step d-flex align-items-center mb-3">
+        <div class="circle">
+          <span class="inner-circle">1</span>
+        </div>
+        <p><%= recipe.step1 %></p>
+      </div>
+      <div class="step d-flex align-items-center mb-3">
+        <div class="circle">
+          <span class="inner-circle">2</span>
+        </div>
+        <p><%= recipe.step2 %></p>
+      </div>
+      <div class="step d-flex align-items-center mb-3">
+        <div class="circle">
+          <span class="inner-circle">3</span>
+        </div>
+        <p><%= recipe.step3 %></p>
+      </div>
     </div>
-    <p><%= recipe.step1 %></p>
-  </div>
-  <div class="step d-flex align-items-center mb-3">
-    <div class="circle">
-      <span class="number">2</span>
-    </div>
-    <p><%= recipe.step2 %></p>
-  </div>
-  <div class="step d-flex align-items-center mb-3">
-    <div class="circle">
-      <span class="number">3</span>
-    </div>
-    <p><%= recipe.step3 %></p>
-  </div>
-</div>
-
-
-
-
-
   </div>
 </div>

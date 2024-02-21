@@ -5,24 +5,51 @@ body {
   color: #333231;
 }
 
-header{
+header {
   height: 100px;
 }
 
+p {
+  color: #727272;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+strong {
+  color: #333231;
+}
 
 .circle {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #FEFEFE; /* Couleur de fond du rond */
+  background-color: #FEFEFE;
+  /* Couleur de fond du rond */
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #333231; /* Couleur du chiffre */
+  color: #333231;
+  /* Couleur du chiffre */
   font-size: 23px;
   font-weight: bold;
 }
 
-.number {
-  z-index: 1; /* Assure que le chiffre est au-dessus du rond */
+.inner-circle {
+  z-index: 1;
+  /* Assure que le chiffre est au-dessus du rond */
+}
+
+.ingredient-title {
+  color: #333231;
+  font-size: 18px;
+}
+.ingredient-weight{
+  font-weight: 300;
+}
+
+img{
+  box-sizing: content-box !important;
+  width: 100% !important;
 }
