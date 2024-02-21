@@ -1,19 +1,38 @@
-
 <div class="container">
   <div class="row">
     <div class="col">
       <p style="color: green;"><%= notice %></p>
-      <h1>Recettes</h1>
-
-      <div id="recipes">
+      <p>Cuisine Kitch</p>
+      <h1>Découvrez les <br>
+        recettes du moment</h1>
+      <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
+      <div id="recipes" class="row">
+        <h2 class="col-12">Tendances</h2>
         <% @recipes.each do |recipe| %>
-          <%= render recipe %>
-          <p>
-            <%= link_to "Montrer cette recette", recipe %>
-          </p>
+          <div class="col-lg-4 mb-4 index-card">
+            <%= link_to recipe do %>
+              <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
+                <div class="overlay"></div>
+                <div class="card-body">
+                  <div class="flex-tag d-flex flex-wrap">
+                    <div class="tag d-flex align-items-center justify-content-start">
+                      <p class="tag-text my-3 mx-3">Végé</p>
+                    </div>
+                    <div class="tag d-flex align-items-center justify-content-start">
+                      <p class="tag-text my-3 mx-3">Chaud</p>
+                    </div>
+                    <div class="tag d-flex align-items-center justify-content-start">
+                      <p class="tag-text my-3 mx-3">Plat</p>
+                    </div>
+                  </div>
+                  <p class="card-title"><%= recipe.title %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
-      <%= link_to "Nouvelle recette", new_recipe_path, class: "btn btn-primary" %>
+      <%= link_to "Nouvelle recette", new_recipe_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>

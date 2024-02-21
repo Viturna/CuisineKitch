@@ -1,9 +1,11 @@
 // custom.scss
-
+a{
+  text-decoration: none;
+}
 body {
   background-color: #FBF5EF;
   color: #333231;
-  padding: 5vw;
+  padding: 0 5vw;
 }
 
 .container {
@@ -79,7 +81,6 @@ img {
 .tag {
   height: 40px;
   border: 2px solid #333231;
-  background-color: #FBF5EF;
   border-radius: 90px;
   margin-right: 1vw;
 
@@ -93,4 +94,48 @@ img {
 
 .tag-text {
   color: #333231;
+}
+
+
+// Index
+#recipes{
+  background-color: #333231;
+  height: 800px;
+}
+.card{
+  background-size: cover;
+  height: 400px;
+}
+.index-card .card {
+  position: relative;
+  overflow: hidden;
+}
+
+.index-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 101%;
+  height: 101%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.card-body{
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  margin: 0;
+  padding: 30px;
+}
+.index-card .card-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.index-card .tag{
+  border: 2px solid #FFF;
+}
+.index-card .tag-text{
+  color: #FFF !important;
 }
