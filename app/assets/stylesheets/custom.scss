@@ -3,16 +3,21 @@
 body {
   background-color: #FBF5EF;
   color: #333231;
+  padding: 5vw;
 }
 
-header {
+.container {
   height: 100px;
 }
 
 p {
   color: #727272;
 }
-
+h1{
+  font-size: 70px;
+  width: 50%;
+  line-height: 110%;
+}
 h2 {
   font-size: 32px;
 }
@@ -22,36 +27,54 @@ strong {
 }
 
 .circle {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: #FEFEFE;
-  /* Couleur de fond du rond */
   display: flex;
   justify-content: center;
   align-items: center;
   color: #333231;
-  /* Couleur du chiffre */
+
   font-size: 23px;
   font-weight: bold;
+  margin-right: 25px;
 }
 
 .inner-circle {
   z-index: 1;
-  /* Assure que le chiffre est au-dessus du rond */
 }
 
 .ingredient-title {
   color: #333231;
   font-size: 18px;
+  margin-bottom: 0;
 }
 .ingredient-weight{
   font-weight: 300;
+  margin-bottom: 0;
 }
-
+.ingredient-number{
+  font-size:26px;
+  color: #333231;
+}
+.date-crea{
+  margin-bottom: 0;
+}
 img{
   box-sizing: content-box !important;
   width: 100% !important;
-  height: 500px;
+  height: 600px;
   object-fit: cover;
+}
+
+
+// Tag
+.tag{
+  height: 40px;
+  border: 2px solid #333231;
+  border-radius: 90px;
+}
+.tag-text{
+  color: #333231;
 }
