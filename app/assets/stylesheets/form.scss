@@ -30,12 +30,10 @@ strong {
     border-color: #010101;
     min-height: 55px;
     background-color: #FBF5EF;
+    :focus{
+        background-color: #fceddf;
+    }
 }
-
-.form-control:focus{
-    background-color: #fceddf;
-}
-
 .form-time{
     width: 240px;
 }

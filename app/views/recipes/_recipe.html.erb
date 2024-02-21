@@ -89,9 +89,9 @@
       <div class="row py-4">
         <p><%= recipe.description %></p>
         <p class="col-md-3">Temps total <strong><%= total_time(recipe) %>min</strong></p>
-        <p class="col-md-3">Préparation <strong><%= recipe.preparationtime.min%>min</strong></p>
-        <p class="col-md-3">Cuisson <strong><%= recipe.cookingtime.min%>min</strong></p>
-        <p class="col-md-3">Repos <strong><%= recipe.restingtime.min%>min</strong></p>
+        <p class="col-md-3">Préparation <strong><%= recipe.preparationtime%>min</strong></p>
+        <p class="col-md-3">Cuisson <strong><%= recipe.cookingtime%>min</strong></p>
+        <p class="col-md-3">Repos <strong><%= recipe.restingtime%>min</strong></p>
       </div>
       <h2>A savoir avant de commencer</h2>
       <div class="col py-4 d-flex flex-column flex-md-row">
