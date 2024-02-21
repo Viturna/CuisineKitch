@@ -74,6 +74,11 @@ img{
   height: 40px;
   border: 2px solid #333231;
   border-radius: 90px;
+  margin-right: 1vw;
+  :hover{
+    background: #333231 !important;
+    color: #FFF;
+  }
 }
 .tag-text{
   color: #333231;
