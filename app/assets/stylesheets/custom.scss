@@ -13,11 +13,13 @@ body {
 p {
   color: #727272;
 }
-h1{
+
+h1 {
   font-size: 70px;
   width: 50%;
   line-height: 110%;
 }
+
 h2 {
   font-size: 32px;
 }
@@ -50,18 +52,22 @@ strong {
   font-size: 18px;
   margin-bottom: 0;
 }
-.ingredient-weight{
+
+.ingredient-weight {
   font-weight: 300;
   margin-bottom: 0;
 }
-.ingredient-number{
-  font-size:26px;
+
+.ingredient-number {
+  font-size: 26px;
   color: #333231;
 }
-.date-crea{
+
+.date-crea {
   margin-bottom: 0;
 }
-img{
+
+img {
   box-sizing: content-box !important;
   width: 100% !important;
   height: 600px;
@@ -70,16 +76,21 @@ img{
 
 
 // Tag
-.tag{
+.tag {
   height: 40px;
   border: 2px solid #333231;
+  background-color: #FBF5EF;
   border-radius: 90px;
   margin-right: 1vw;
-  :hover{
-    background: #333231 !important;
+
+  &:hover {
+    background-color: #333231 !important;
+  }
+  &:hover .tag-text {
     color: #FFF;
   }
 }
-.tag-text{
+
+.tag-text {
   color: #333231;
 }
