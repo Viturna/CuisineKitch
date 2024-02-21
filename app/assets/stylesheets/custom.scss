@@ -8,3 +8,21 @@ body {
 header{
   height: 100px;
 }
+
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FEFEFE; /* Couleur de fond du rond */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333231; /* Couleur du chiffre */
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.number {
+  z-index: 1; /* Assure que le chiffre est au-dessus du rond */
+}

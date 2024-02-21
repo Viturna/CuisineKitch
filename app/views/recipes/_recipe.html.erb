@@ -1,16 +1,46 @@
-<div id="<%= dom_id recipe %>" class="row">
-  <div class="col-md-4">
-    <img src="<%= recipe.image %>">
+    <div id="<%= dom_id recipe %>" class="row">
+      <div class="col-md-4">
+        <img width="300px" src="<%= recipe.image %>">
+      </div>
+      <div class="col-md-8">
+        <p>Recette créé le <%= recipe.created_at.strftime("%d %B %Y") %></p>
+        <h1><%= recipe.title %></h1>
+
+        <div class="row">
+          <p><%= recipe.description %></p>
+          <p class="col-md-3">Temps total <strong><%= total_time(recipe) %>min</strong></p>
+          <p class="col-md-3">Préparation <strong><%= recipe.preparationtime.min%>min</strong></p>
+          <p class="col-md-3">Cuisson <strong><%= recipe.cookingtime.min%>min</strong></p>
+          <p class="col-md-3">Repos <strong><%= recipe.restingtime.min%>min</strong></p>
+        </div>
+
+    <h2>A savoir avant de commencer</h2>
+    <h2>Recettes</h2>
+
+    <div class="flex">
+  <div class="step d-flex align-items-center mb-3">
+    <div class="circle">
+      <span class="number">1</span>
+    </div>
+    <p><%= recipe.step1 %></p>
   </div>
-  <div class="col-md-8">
-    <p>Recette créé le <%= recipe.created_at.strftime("%d %B %Y") %></p>
-    <h1><%= recipe.title %></h1>
-    <p>Préparation <strong><%= (recipe.preparationtime.min * 60) + recipe.preparationtime.sec %>m</strong></p>
-    <p>Cuisson <strong> <%= (recipe.cookingtime.min * 60) + recipe.cookingtime.sec %>m</strong></p>
-    <p>Repos <strong><%= (recipe.restingtime.min * 60) + recipe.restingtime.sec %>m</strong></p>
-    <p><strong>Description:</strong> <%= recipe.description %></p>
-    <p><strong>Step1:</strong> <%= recipe.step1 %></p>
-    <p><strong>Step2:</strong> <%= recipe.step2 %></p>
-    <p><strong>Step3:</strong> <%= recipe.step3 %></p>
+  <div class="step d-flex align-items-center mb-3">
+    <div class="circle">
+      <span class="number">2</span>
+    </div>
+    <p><%= recipe.step2 %></p>
+  </div>
+  <div class="step d-flex align-items-center mb-3">
+    <div class="circle">
+      <span class="number">3</span>
+    </div>
+    <p><%= recipe.step3 %></p>
+  </div>
+</div>
+
+
+
+
+
   </div>
 </div>
