@@ -25,13 +25,29 @@
     <% end %>
   </div>
 
-  <div class="mb-4">
+  <!--<div class="mb-4">
     <strong>Choisir les ingrédients :</strong><br>
     <% Ingredient.all.each do |ingredient| %>
       <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.categories.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}" %>
       <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
     <% end %>
+  </div>-->
+  <div class="mb-4">
+  <strong>Choisir les ingrédients :</strong><br>
+  <% Ingredient.all.each do |ingredient| %>
+  <div>
+    <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.categories.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox", data: { ingredient_id: ingredient.id } %>
+    <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
+    <div class="mb-2 input-quantite">
+      <%= form.label "Quantité", style: "display: block" %>
+      <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", nil, placeholder: 'Quantité', class: "form-control ingredient-quantity", data: { ingredient_id: ingredient.id } %>
+    </div>
+
   </div>
+<% end %>
+
+</div>
+
 
   <div class ="d-inline-flex gap-5 justify-content-between mb-4">
     <div>
