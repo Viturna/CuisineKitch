@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-4">
+    <%= form.label :title, style: "display: block", style: "display: block", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Votre titre"  %>
   </div>
 
-  <div>
-    <%= form.submit %>
+<div class="d-flex align-items-center justify-content-end gap-5">
+    <div>
+      <%= link_to "Annuler", categories_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+    </div>
+    <div class="ml-4">
+      <%= form.submit "Valider", class: "btn btn-dark btn-lg" %>
+    </div>
   </div>
 <% end %>
