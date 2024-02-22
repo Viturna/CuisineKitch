@@ -51,6 +51,7 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
+    delete_associated_entries(@recipe)
     @recipe.destroy!
 
     respond_to do |format|
@@ -67,7 +68,7 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: []) 
+      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [])
     end
 
     # Méthode pour sauvegarder les ingrédients avec les quantités
@@ -78,8 +79,13 @@ class RecipesController < ApplicationController
         next if quantity.blank?
 
         ingredient = Ingredient.find(ingredient_id)
-        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title)
+        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title, image: ingredient.image)
       end
+    end
+
+    def delete_associated_entries(recipe)
+      recipe.recipe_ingredients.destroy_all
+      recipe.recipe_categories.destroy_all
     end
 
 end
