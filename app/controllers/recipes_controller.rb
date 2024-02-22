@@ -68,26 +68,29 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :price, :difficulty, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [], ingredient_unitys: [])
+      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :price, :difficulty, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [], ingredient_units: [])
     end
 
 
     # Méthode pour sauvegarder les ingrédients avec les quantités
 def save_recipe_ingredients(recipe)
   # Vous combinez les identifiants des ingrédients avec les quantités fournies
-  ingredient_ids_with_quantities = params[:recipe][:ingredient_ids].map(&:to_i).zip(params[:recipe][:ingredient_quantities].values)
+  ingredient_ids_with_quantities = params[:recipe][:ingredient_ids].map(&:to_i).zip(
+    params[:recipe][:ingredient_quantities].values,
+    params[:recipe][:ingredient_units]
+  )
 
   # Vous parcourez chaque paire d'identifiant d'ingrédient et quantité
-  ingredient_ids_with_quantities.each do |ingredient_id, quantity|
+  ingredient_ids_with_quantities.each do |ingredient_id, quantity, unit|
     # Si la quantité est vide, vous passez à l'itération suivante
-    next if quantity.blank?
+    next if quantity.blank? || unit.blank?
 
     # Vous trouvez l'objet Ingredient correspondant à l'identifiant
     ingredient = Ingredient.find(ingredient_id)
 
     # Vous créez une nouvelle entrée dans la table d'association recipe_ingredients
     # Cela associe l'ingrédient à la recette avec sa quantité et d'autres informations pertinentes
-    recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title, image: ingredient.image)
+    recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title, image: ingredient.image, unit: unit)
   end
 end
 
