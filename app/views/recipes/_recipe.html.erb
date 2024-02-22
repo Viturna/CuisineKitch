@@ -70,26 +70,15 @@
     <div class="col-md-6">
       <p class="date-crea">Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
       <h1><%= recipe.title %></h1>
-      <p><strong>Categories:</strong> <%= recipe.categories.pluck(:title).join(", ") %></p>
+      <div class="flex-tag d-flex py-2">
+        <% recipe.categories.each do |category| %>
+          <div class="tag d-flex align-items-center justify-content-center">
+            <p class="tag-text my-3 mx-3"><%= category.title %></p>
+          </div>
+        <% end %>
+      </div>
       <p><strong>Ingrédients:</strong> <%= recipe.ingredients.pluck(:title).join(", ") %></p>
 
-      <!--<div class="flex-tag d-flex py-2">
-        <div class="tag d-flex align-items-center justify-content-center">
-          <p class="tag-text my-3 mx-3">Végé</p>
-        </div>
-        <div class="tag d-flex align-items-center justify-content-center">
-          <p class="tag-text my-3 mx-3">Chaud</p>
-        </div>
-        <div class="tag d-flex align-items-center justify-content-center">
-          <p class="tag-text my-3 mx-3">Plat</p>
-        </div>
-        <div class="tag d-flex align-items-center justify-content-center">
-          <p class="tag-text my-3 mx-3">Etudiant</p>
-        </div>
-        <div class="tag d-flex align-items-center justify-content-center">
-          <p class="tag-text my-3 mx-3">Petit prix</p>
-        </div>
-      </div>-->
       <div class="row py-4">
         <p><%= recipe.description %></p>
         <p class="col-md-3">Temps total <strong><%= total_time(recipe) %>min</strong></p>

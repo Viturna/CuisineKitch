@@ -4,4 +4,10 @@
     <%= ingredient.title %>
   </p>
 
+  <% if ingredient.image.attached? %>
+    <%= image_tag ingredient.image %>
+  <% else %>
+    <p>No image attached</p>
+  <% end %>
+
 </div>
