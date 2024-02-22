@@ -35,8 +35,9 @@
                 <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", nil, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
               </div>
               <div class="col">
-                <%= form.select "recipe[ingredient_units][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)"]), { prompt: "Choisir l'unité" }, class: "form-control" %>
+                <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)"]), class: "form-control" %>
               </div>
+
             </div>
           </div>
         <% end %>
