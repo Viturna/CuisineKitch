@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   # GET /recipes/new
@@ -65,6 +66,7 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image)
+      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image, category_ids: [])
     end
+    
 end

@@ -17,6 +17,14 @@
     <%= form.text_field :title, class: "form-control", placeholder: "Lasagne au chocolat" %>
   </div>
 
+  <div class="mb-4">
+    <strong>Choisir les catégories :</strong><br>
+    <% Category.all.each do |category| %>
+      <%= check_box_tag "recipe[category_ids][]", category.id, @recipe.categories.include?(category), id: "recipe_category_ids_#{category.id}" %>
+      <%= label_tag "recipe_category_ids_#{category.id}", category.title %><br>
+    <% end %>
+  </div>
+
   <div class ="d-inline-flex gap-5 justify-content-between mb-4">
     <div>
       <%= form.label "Temps de préparation", style: "display: block", class: "mb-2" %>

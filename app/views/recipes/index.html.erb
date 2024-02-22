@@ -6,6 +6,39 @@
       recettes du moment</h1>
     <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
   </div>
+
+
+<div id="recipes" class="row">
+  <h2 class="index-title">Tendances</h2>
+    
+  <% @recipes.each do |recipe| %>
+    <div class="col-lg-4 mb-4 index-card">
+      <%= render partial: 'recipe', locals: { recipe: recipe } %>
+    </div>
+  <% end %>
+  <% @recipes.each do |recipe| %>
+    <div class="col-lg-4 mb-4 index-card">
+      <%= link_to recipe do %>
+        <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
+          <div class="overlay"></div>
+          <div class="card-body">
+            <div class="flex-tag d-flex flex-wrap">
+              <div class="tag d-flex align-items-center justify-content-start">
+                <p><strong>Categories:</strong> <%= recipe.categories.pluck(:title).join(", ") %></p>
+              </div>
+              <div class="tag d-flex align-items-center justify-content-start">
+                <p class="tag-text my-3 mx-3">Chaud</p>
+              </div>
+              <div class="tag d-flex align-items-center justify-content-start">
+                <p class="tag-text my-3 mx-3">Plat</p>
+              </div>
+            </div>
+            <p class="card-title"><%= recipe.title %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <div id="recipes" class="row">
   <h2 class="index-title">Tendances</h2>
