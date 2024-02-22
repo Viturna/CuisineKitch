@@ -10,7 +10,7 @@
 <div id="recipes" class="row">
   <h2 class="index-title">Tendances</h2>
   <% @recipes.each do |recipe| %>
-    <div class="col-lg-4 mb-4 index-card">
+    <div class="col-lg-4 mb-3 index-card">
       <%= link_to recipe do %>
         <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
           <div class="overlay"></div>
