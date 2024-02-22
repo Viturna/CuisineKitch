@@ -35,8 +35,9 @@ p {
 
 h1 {
   font-size: 70px;
-  width: 50%;
+  width: 80%;
   line-height: 110%;
+  font-weight: 700;
 }
 
 h2 {
@@ -153,7 +154,7 @@ img {
   margin: 0;
   padding: 20px;
 }
-.index-card .card-title {
+ .card-title {
   color: #fff;
   font-size: 24px;
   font-weight: 600;
@@ -169,4 +170,33 @@ img {
 .head-title{
   margin-bottom: 0px;
   font-size: 24px;
+}
+
+// Catégories
+.category-card{
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  background-color: #333231;
+}
+.category-card .flex-btn{
+  margin-top: 60px;
+}
+.category-card .flex-btn .btn-white:nth-child(1){
+  margin-right: 30px;
+}
+
+
+
+.btn-style{
+  width: fit-content;
+  padding: 20px 40px;
+  height: 50px;
+  border-radius: 80px;
+  border: none;
+  background-color: #333231;
+  color: #FFF;
+  &:hover{
+    opacity: 0.7;
+  }
 }

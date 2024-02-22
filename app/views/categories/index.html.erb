@@ -1,14 +1,24 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<div id="categories">
+<div class="row">
+  <div class="col">
+    <p style="color: green;"><%= notice %></p>
+    <p class="hanzi green head-title">Cuisine Kitch</p>
+    <h1>Les différentes catégories</h1>
+    <p>Ajouter / Supprimer vos catégories</p>
+  </div>
+  <div class="col d-flex align-items-start justify-content-end" style="margin-top:50px;">
+    <%= link_to "Ajouter une catégorie", new_category_path, class:"btn btn-style d-flex align-items-center justify-content-center" %>
+  </div>
+</div>
+<div id="categories" class="row my-5">
   <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
+    <div class="col-lg-4 mb-3 mx-3 category-card d-flex align-items-center justify-content-center" style="flex-direction:column;">
+      <p class="card-title"><%= category.title %></p>
+      <div class="flex-btn d-flex">
+        <%= link_to(edit_category_path(category), class: "btn-white d-flex align-items-center justify-content-center") do %>
+          Modifier
+        <% end %>
+        <%= button_to "Supprimer", category, method: :delete, class: "btn-white" %>
+      </div>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New category", new_category_path %>
