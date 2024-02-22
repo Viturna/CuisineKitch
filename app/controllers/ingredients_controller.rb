@@ -49,6 +49,8 @@ class IngredientsController < ApplicationController
 
   # DELETE /ingredients/1 or /ingredients/1.json
   def destroy
+    delete_associated_entries(@ingredient)
+
     @ingredient.destroy!
 
     respond_to do |format|
@@ -65,5 +67,9 @@ class IngredientsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def ingredient_params
       params.require(:ingredient).permit(:title, :image)
+    end
+
+    def delete_associated_entries(ingredient)
+      ingredient.recipe_ingredients.destroy_all
     end
 end
