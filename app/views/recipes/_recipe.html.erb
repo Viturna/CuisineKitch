@@ -2,12 +2,16 @@
   <div id="<%= dom_id recipe %>" class="row grid">
     <div class="col-md-5">
       <img src="<%= recipe.image %>">
-      <h2 class="py-4">Ingrédients</h2>
-      <div id="personCount">
-        <label for="personInput">Nombre de personnes :</label>
-        <button id="minusBtn">-</button>
-        <input type="number" id="personInput" value="1" min="1">
-        <button id="plusBtn">+</button>
+      <div class="d-flex align-items-center justify-content-between col">
+        <h2 class="py-4 d-inline-block">Ingrédients</h2>
+        <div id="personCount" class="person-count-container d-inline-block ml-4">
+          <div class="person-count-controls">
+            <button id="minusBtn">-</button>
+            <input type="text" id="personInput" value="1" min="1" max="25" readonly>
+            <span>personnes</span>
+            <button id="plusBtn">+</button>
+          </div>
+        </div>
       </div>
       <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
         <% if recipe_ingredient.quantity.present? %>
@@ -123,33 +127,42 @@
     const minusBtn = document.getElementById('minusBtn');
     const personInput = document.getElementById('personInput');
 
-    // Fonction pour mettre à jour les quantités des ingrédients
     function updateIngredientQuantities() {
       const ingredientsQuantities = document.querySelectorAll('.ingredient-number');
       const numberOfPeople = parseInt(personInput.value);
       ingredientsQuantities.forEach(function(ingredientQuantityElement) {
         const originalQuantity = parseFloat(ingredientQuantityElement.dataset.originalQuantity);
         const newQuantity = originalQuantity * numberOfPeople;
-        // Mettez à jour la quantité en multipliant par le nombre de personnes
-        // Si la partie décimale est égale à zéro, n'affichez pas de décimales
         ingredientQuantityElement.textContent = newQuantity % 1 === 0 ? newQuantity.toFixed(0) : newQuantity.toFixed(2).replace(/\.?0+$/, '');
       });
     }
 
-    // Écouteurs d'événements pour les boutons + et -
     plusBtn.addEventListener('click', function() {
-      personInput.value = parseInt(personInput.value) + 1;
-      updateIngredientQuantities(); // Mettre à jour les quantités lorsque le nombre de personnes change
+      if (parseInt(personInput.value) < 25) {
+        personInput.value = parseInt(personInput.value) + 1;
+        updateIngredientQuantities();
+      }
     });
 
     minusBtn.addEventListener('click', function() {
       if (parseInt(personInput.value) > 1) {
         personInput.value = parseInt(personInput.value) - 1;
-        updateIngredientQuantities(); // Mettre à jour les quantités lorsque le nombre de personnes change
+        updateIngredientQuantities();
       }
     });
 
-    // Mettre à jour les quantités des ingrédients lors du chargement de la page
+    // Contrôler la saisie pour s'assurer que la valeur reste entre 1 et 25
+    personInput.addEventListener('input', function() {
+      const value = parseInt(personInput.value);
+      if (isNaN(value) || value < 1) {
+        personInput.value = 1;
+      } else if (value > 25) {
+        personInput.value = 25;
+      }
+      updateIngredientQuantities();
+    });
+
+
     updateIngredientQuantities();
   });
 </script>

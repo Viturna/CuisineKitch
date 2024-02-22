@@ -83,7 +83,6 @@ strong {
   justify-content: center;
   align-items: center;
   color: #333231;
-
   font-size: 23px;
   font-weight: bold;
   margin-right: 25px;
@@ -141,6 +140,49 @@ img {
   color: #333231;
 }
 
+.person-count-container {
+  border: 1px solid #333231;
+  display: inline-block;
+  border-radius: 250px;
+}
+
+.person-count-container span {
+  font-size: 14px;
+  font-weight: 300;
+  color: #727272;
+}
+
+#minusBtn {
+  color: #333231;
+  background: #FFF;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  height: 50px;
+  width: 35px;
+  border: none;
+  border-right: 1px solid #333231;
+}
+
+#personInput {
+  color: #333231;
+  background: #FBF5EF;
+  width: 20px;
+  height: 50px;
+
+  padding-right: 0;
+  border: none;
+}
+
+#plusBtn {
+  color: #333231;
+  background: #FFF;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  height: 50px;
+  width: 35px;
+  border: none;
+  border-left: 1px solid #333231;
+}
 
 // Index
 .categorie-link {
