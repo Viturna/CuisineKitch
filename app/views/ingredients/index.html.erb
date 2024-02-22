@@ -11,12 +11,12 @@
 </div>
 <div id="categories" class="row row-cols-3">
   <% @ingredients.each do |ingredient| %>
-    <div class="col mb-3 mx-3 category-card d-flex align-items-center justify-content-center" style="flex-direction:column;">
-      <p class="card-title"><%= ingredient.title %></p>
-      <div>
+    <div class="col my-3 mx-3 category-card d-flex align-items-center " style="flex-direction:column;">
+      <p class="card-title my-2"><%= ingredient.title %></p>
+      <div class="my-3">
         <%= image_tag ingredient.image, class: "custom-image" %>
       </div>
-      <div class="flex-btn d-flex">
+      <div class="flex-btn d-flex my-4">
         <%= link_to(edit_ingredient_path(ingredient), class: "btn-white d-flex align-items-center justify-content-center") do %>
           Modifier
         <% end %>
