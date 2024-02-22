@@ -77,7 +77,7 @@ class IngredientsController < ApplicationController
 
     def save_image_to_assets
       image = params[:ingredient][:image]
-      filename = Rails.root.join(image.original_filename)
+      filename = Rails.root.join('app', 'assets', image.original_filename)
       File.open(filename, 'wb') do |file|
         file.write(image.read)
       end
