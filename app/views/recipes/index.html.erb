@@ -1,50 +1,52 @@
-<div class="container py-5" style="padding-right:0px">
-  <div class="row grid align-items-center" style="padding-right:0px">
-    <div class="col-md-6" style="padding-right:0px">
-      <p style="color: green;"><%= notice %></p>
-      <p class="hanzi green head-title">Cuisine Kitch</p>
-      <h1>Découvrez les <br>
-        recettes du moment</h1>
-      <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
+<div class="container grid">
+  <div class="py-5" style="padding-right:0px">
+    <div class="row align-items-center" style="padding-right:0px">
+      <div class="col-md-6" style="padding-right:0px">
+        <p style="color: green;"><%= notice %></p>
+        <p class="hanzi green head-title">Cuisine Kitch</p>
+        <h1>Découvrez les <br>
+          recettes du moment</h1>
+        <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
+      </div>
+      <div class="col-md-6 text-md-end px-5" style="padding-right:0px">
+        <%= image_tag "decoration.png", alt:"", class: "home-index img-fluid"%>
+      </div>
     </div>
-    <div class="col-md-6 text-md-end" style="padding-right:0px">
-      <%= image_tag "decoration.png", alt:"", class: "home-index img-fluid mx-auto"%>
+    <div id="tendances" class="row">
+      <div class="col">
+        <h2 class="index-title">Tendances</h2>
+      </div>
     </div>
   </div>
-  <div id="tendances" class="row">
-    <div class="col grid">
-      <h2 class="index-title">Tendances</h2>
-    </div>
-  </div>
-</div>
-<div class="row grid">
-  <h2 class="py-5">Catégories</h2>
-  <ul class="d-flex justify-content-between categorie-nav" style="list-style:none;">
-    <li class="categorie-link active">Tout</li>
-    <li class="categorie-link">Végan</li>
-    <li class="categorie-link">Test</li>
-    <li class="categorie-link">Test</li>
-    <li class="categorie-link">Test</li>
-    <li class="categorie-link">JSP</li>
-  </ul>
-  <% @recipes.each do |recipe| %>
-    <div class="col-lg-4 mb-3 index-card pt-4">
-      <%= link_to recipe do %>
-        <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
-          <div class="overlay"></div>
-          <div class="card-body">
-            <div class="flex-tag d-flex flex-wrap">
-              <% recipe.categories.each do |category| %>
-                <div class="tag d-flex align-items-center justify-content-start">
-                  <p class="tag-text my-3 mx-3"><%= category.title %></p>
-                </div>
-              <% end %>
+  <div class="row">
+    <h2 class="py-5">Catégories</h2>
+    <ul class="d-flex justify-content-between categorie-nav" style="list-style:none;">
+      <li class="categorie-link active">Tout</li>
+      <li class="categorie-link">Végan</li>
+      <li class="categorie-link">Test</li>
+      <li class="categorie-link">Test</li>
+      <li class="categorie-link">Test</li>
+      <li class="categorie-link">JSP</li>
+    </ul>
+    <% @recipes.each do |recipe| %>
+      <div class="col-lg-4 mb-3 index-card pt-4">
+        <%= link_to recipe do %>
+          <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
+            <div class="overlay"></div>
+            <div class="card-body">
+              <div class="flex-tag d-flex flex-wrap">
+                <% recipe.categories.each do |category| %>
+                  <div class="tag d-flex align-items-center justify-content-start">
+                    <p class="tag-text my-3 mx-3"><%= category.title %></p>
+                  </div>
+                <% end %>
+              </div>
+              <p class="card-title"><%= recipe.title %></p>
             </div>
-            <p class="card-title"><%= recipe.title %></p>
           </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  </div>
 </div>
