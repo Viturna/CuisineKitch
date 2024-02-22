@@ -9,11 +9,13 @@
     <%= link_to "Ajouter un ingrédient", new_ingredient_path, class:"btn btn-style d-flex align-items-center justify-content-center"  %>
   </div>
 </div>
-<div id="categories" class="row my-5">
+<div id="categories" class="row row-cols-3">
   <% @ingredients.each do |ingredient| %>
-    <div class="col-lg-4 mb-3 mx-3 category-card d-flex align-items-center justify-content-center" style="flex-direction:column;">
+    <div class="col mb-3 mx-3 category-card d-flex align-items-center justify-content-center" style="flex-direction:column;">
       <p class="card-title"><%= ingredient.title %></p>
-      <img src="<%= ingredient.image %>">
+      <div>
+        <%= image_tag ingredient.image, class: "custom-image" %>
+      </div>
       <div class="flex-btn d-flex">
         <%= link_to(edit_ingredient_path(ingredient), class: "btn-white d-flex align-items-center justify-content-center") do %>
           Modifier
