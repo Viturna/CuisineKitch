@@ -233,7 +233,7 @@ img {
 }
 
 // recette show
-.btn-custom{
+.btn-custom {
   width: 10vw;
   border-radius: 60px;
 }
@@ -241,6 +241,7 @@ img {
 // Catégories
 .category-card {
   width: 400px;
+  min-height: 200px;
   height: fit-content;
   border-radius: 10px;
   background-color: #333231;
