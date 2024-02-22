@@ -198,3 +198,10 @@ img {
     opacity: 0.7;
   }
 }
+
+
+.ingredient-image{
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover !important;
+}

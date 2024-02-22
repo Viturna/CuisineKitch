@@ -25,7 +25,6 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.save
-        save_image_to_assets if params[:ingredient][:image]
         format.html { redirect_to ingredient_url(@ingredient), notice: "Ingredient was successfully created." }
         format.json { render :show, status: :created, location: @ingredient }
       else
@@ -39,7 +38,6 @@ class IngredientsController < ApplicationController
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
-        save_image_to_assets if params[:ingredient][:image]
         format.html { redirect_to ingredient_url(@ingredient), notice: "Ingredient was successfully updated." }
         format.json { render :show, status: :ok, location: @ingredient }
       else
@@ -58,12 +56,6 @@ class IngredientsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def display_image
-    @ingredient = Ingredient.find(params[:id])
-    send_data @ingredient.image_data, type: 'image/png', disposition: 'inline'
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ingredient
@@ -73,15 +65,5 @@ class IngredientsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def ingredient_params
       params.require(:ingredient).permit(:title, :image)
-    end
-
-    def save_image_to_assets
-      image = params[:ingredient][:image]
-      filename = Rails.root.join('app', 'assets', 'images', image.original_filename)
-      File.open(filename, 'wb') do |file|
-        file.write(image.read)
-      end
-
-      @ingredient.update(image: image.original_filename)
     end
 end
