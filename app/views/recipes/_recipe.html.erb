@@ -1,6 +1,6 @@
-<div class="container">
-  <div id="<%= dom_id recipe %>" class="row">
-    <div class="col mx-3">
+<div class="container pt-5">
+  <div id="<%= dom_id recipe %>" class="row grid">
+    <div class="col-md-6">
       <img src="<%= recipe.image %>">
       <h2 class="py-4">Ingrédients</h2>
       <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
@@ -25,7 +25,6 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-md-1"></div>
     <div class="col-md-6">
       <p class="date-crea">Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
       <h1><%= recipe.title %></h1>
@@ -101,13 +100,12 @@
       </div>
     </div>
   </div>
-
   <div class="d-flex gap-4 justify-content-end mt-5">
     <div class="ml-4">
       <%= link_to "Modifier", edit_recipe_path(@recipe),  class: "btn btn-outline-dark btn-custom" %>
     </div>
     <div class="ml-4">
-    <%= button_to "Supprimer", @recipe, method: :delete, class: "btn btn-dark btn-custom" %>
+      <%= button_to "Supprimer", @recipe, method: :delete, class: "btn btn-dark btn-custom" %>
     </div>
   </div>
 </div>
