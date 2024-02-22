@@ -1,9 +1,3 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @recipe %>
-
-<div>
-  <%= link_to "Modifier cette recette", edit_recipe_path(@recipe),  class: "btn btn-primary" %>
-
-  <%= button_to "Supprimer cette recette", @recipe, method: :delete, class: "btn btn-warning" %>
-</div>
