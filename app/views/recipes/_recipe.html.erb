@@ -77,7 +77,14 @@
           </div>
         <% end %>
       </div>
-      <p><strong>Ingrédients:</strong> <%= recipe.ingredients.pluck(:title).join(", ") %></p>
+      <p><strong>Ingrédients:</strong>
+        <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
+          <%= recipe_ingredient.ingredient.title %>
+          <%= recipe_ingredient.quantity %>
+        <% end %>
+
+      </p>
+
 
       <div class="row py-4">
         <p><%= recipe.description %></p>

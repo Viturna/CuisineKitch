@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
+        save_recipe_ingredients(@recipe) # Ajout pour sauvegarder les ingrédients avec les quantités
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -66,7 +67,17 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [])
+      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: []) 
     end
-    
+
+    # Méthode pour sauvegarder les ingrédients avec les quantités
+    def save_recipe_ingredients(recipe)
+      ingredient_ids_with_quantities = params[:recipe][:ingredient_ids].map(&:to_i).zip(params[:recipe][:ingredient_quantities].values)
+
+      ingredient_ids_with_quantities.each do |ingredient_id, quantity|
+        next if quantity.blank?
+
+        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity)
+      end
+    end
 end
