@@ -2,6 +2,16 @@
 a{
   text-decoration: none;
 }
+.nav-link{
+  font-size: 18px;
+  color: #333231;
+}
+.nav-link .active{
+  color: #0B6F21;
+}
+.nav-link:hover{
+  opacity: 0.8;
+}
 .green{
   color: #0B6F21;
 }
