@@ -79,9 +79,11 @@ class RecipesController < ApplicationController
         next if quantity.blank?
 
         ingredient = Ingredient.find(ingredient_id)
-        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title, image: ingredient.image)
+        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title, )
       end
     end
+
+
 
     def delete_associated_entries(recipe)
       recipe.recipe_ingredients.destroy_all
