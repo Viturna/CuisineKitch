@@ -1,11 +1,14 @@
-<div class="container">
-  <div class="row grid">
-    <div class="col">
+<div class="container py-5" style="padding-right:0px">
+  <div class="row grid align-items-center" style="padding-right:0px">
+    <div class="col-md-6" style="padding-right:0px">
       <p style="color: green;"><%= notice %></p>
       <p class="hanzi green head-title">Cuisine Kitch</p>
       <h1>Découvrez les <br>
         recettes du moment</h1>
       <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
+    </div>
+    <div class="col-md-6 text-md-end" style="padding-right:0px"> <!-- Utilisez text-md-end pour aligner à droite sur les écrans de taille MD et plus -->
+      <%= image_tag "decoration.png", alt:"", class: "home-index"%>
     </div>
   </div>
   <div id="tendances" class="row">
