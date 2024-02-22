@@ -71,6 +71,7 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [])
     end
 
+
     # Méthode pour sauvegarder les ingrédients avec les quantités
     def save_recipe_ingredients(recipe)
       ingredient_ids_with_quantities = params[:recipe][:ingredient_ids].map(&:to_i).zip(params[:recipe][:ingredient_quantities].values)
@@ -79,7 +80,7 @@ class RecipesController < ApplicationController
         next if quantity.blank?
 
         ingredient = Ingredient.find(ingredient_id)
-        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title, )
+        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title, image: ingredient.image)
       end
     end
 
