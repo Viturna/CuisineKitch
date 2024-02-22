@@ -19,14 +19,14 @@
 </div>
 <div class="row grid">
   <h2 class="py-5">Catégories</h2>
-  <nav>
-    <ul>
-      <li>Tout</li>
-      <li>Végan</li>
-      <li>Test</li>
-      <li>JSP</li>
-    </ul>
-  </nav>
+  <ul class="d-flex justify-content-between categorie-nav" style="list-style:none;">
+    <li class="categorie-link active">Tout</li>
+    <li class="categorie-link">Végan</li>
+    <li class="categorie-link">Test</li>
+    <li class="categorie-link">Test</li>
+    <li class="categorie-link">Test</li>
+    <li class="categorie-link">JSP</li>
+  </ul>
   <% @recipes.each do |recipe| %>
     <div class="col-lg-4 mb-3 index-card">
       <%= link_to recipe do %>

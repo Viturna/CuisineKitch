@@ -142,6 +142,19 @@ img {
 
 
 // Index
+.categorie-link {
+  color: #333231;
+}
+
+.categorie-nav {
+  width: 80vw;
+}
+
+.active {
+  color: #0B6F21;
+  font-weight: 700;
+}
+
 .index-title {
   font-weight: 700;
   margin-top: 96px;
@@ -196,11 +209,23 @@ img {
 
 .index-card .tag {
   border: 2px solid #FFF;
+  height: 30px;
+  font-size: 12px;
+
+  &:hover {
+    background-color: #FFF !important;
+  }
+
+  &:hover .tag-text {
+    color: #333231;
+  }
 }
 
 .index-card .tag-text {
-  color: #FFF !important;
+  color: #FFF;
+
 }
+
 
 .head-title {
   margin-bottom: 0px;
