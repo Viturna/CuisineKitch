@@ -12,7 +12,7 @@
   </div>
   <div id="categories" class="row row-cols-3">
     <% @ingredients.each do |ingredient| %>
-      <div class="col my-3 mx-3 category-card d-flex align-items-center " style="flex-direction:column;">
+      <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
         <p class="card-title my-2"><%= ingredient.title %></p>
         <div class="my-3">
           <%= image_tag ingredient.image, class: "custom-image" %>
