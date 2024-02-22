@@ -72,15 +72,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_182008) do
     t.string "difficulty"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.string "statut"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email"
-  end
-
   add_foreign_key "recipe_categories", "categories"
   add_foreign_key "recipe_categories", "recipes"
   add_foreign_key "recipe_ingredients", "ingredients"
