@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row grid">
     <div class="col">
       <p style="color: green;"><%= notice %></p>
       <p class="hanzi green head-title">Cuisine Kitch</p>
@@ -8,26 +8,40 @@
       <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
     </div>
   </div>
-  <div id="recipes" class="row">
-    <h2 class="index-title">Tendances</h2>
-    <% @recipes.each do |recipe| %>
-      <div class="col-lg-4 mb-3 index-card">
-        <%= link_to recipe do %>
-          <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
-            <div class="overlay"></div>
-            <div class="card-body">
-              <div class="flex-tag d-flex flex-wrap">
-                <% recipe.categories.each do |category| %>
-                  <div class="tag d-flex align-items-center justify-content-start">
-                    <p class="tag-text my-3 mx-3"><%= category.title %></p>
-                  </div>
-                <% end %>
-              </div>
-              <p class="card-title"><%= recipe.title %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+  <div id="tendances" class="row">
+    <div class="col grid">
+      <h2 class="index-title">Tendances</h2>
+    </div>
   </div>
+</div>
+<div class="row grid">
+  <h2 class="py-5">Catégories</h2>
+  <nav>
+    <ul>
+      <li>Tout</li>
+      <li>Végan</li>
+      <li>Test</li>
+      <li>JSP</li>
+    </ul>
+  </nav>
+  <% @recipes.each do |recipe| %>
+    <div class="col-lg-4 mb-3 index-card">
+      <%= link_to recipe do %>
+        <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
+          <div class="overlay"></div>
+          <div class="card-body">
+            <div class="flex-tag d-flex flex-wrap">
+              <% recipe.categories.each do |category| %>
+                <div class="tag d-flex align-items-center justify-content-start">
+                  <p class="tag-text my-3 mx-3"><%= category.title %></p>
+                </div>
+              <% end %>
+            </div>
+            <p class="card-title"><%= recipe.title %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 </div>

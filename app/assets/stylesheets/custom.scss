@@ -3,6 +3,10 @@ a {
   text-decoration: none;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .nav-link {
   font-size: 18px;
   color: #333231;
@@ -31,6 +35,9 @@ body {
 
 .container {
   margin: 0;
+}
+
+.grid {
   padding: 0 5vw;
 }
 
@@ -131,13 +138,15 @@ img {
   margin-top: 96px;
 }
 
-#recipes {
+#tendances {
+  padding: 0;
+  width: 100vw;
   margin-top: 96px;
   background-color: #333231;
   height: 600px;
 }
 
-#recipes h2 {
+#tendances h2 {
   color: #FFF;
   font-weight: 700;
 }
