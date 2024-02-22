@@ -1,31 +1,40 @@
 // custom.scss
-a{
+a {
   text-decoration: none;
 }
-.nav-link{
+
+.nav-link {
   font-size: 18px;
   color: #333231;
 }
-.nav-link .active{
+
+.nav-link .active {
   color: #0B6F21;
 }
-.nav-link:hover{
+
+.nav-link:hover {
   opacity: 0.8;
 }
-.green{
+
+.green {
   color: #0B6F21;
 }
-.hanzi{
+
+.hanzi {
   font-family: 'HanziPen TC';
 }
+
 body {
   background-color: #FBF5EF;
   color: #333231;
 }
-.row{
+
+.container {
+  margin: 0;
   padding: 0 5vw;
 }
-.container {
+
+header {
   height: 100px;
 }
 
@@ -105,6 +114,7 @@ img {
   &:hover {
     background-color: #333231 !important;
   }
+
   &:hover .tag-text {
     color: #FFF;
   }
@@ -116,24 +126,27 @@ img {
 
 
 // Index
-.index-title{
+.index-title {
   font-weight: 700;
   margin-top: 96px;
 }
-#recipes{
+
+#recipes {
   margin-top: 96px;
   background-color: #333231;
   height: 600px;
 }
-#recipes h2{
+
+#recipes h2 {
   color: #FFF;
   font-weight: 700;
 }
 
-.card{
+.card {
   background-size: cover;
   height: 280px;
 }
+
 .index-card .card {
   position: relative;
   overflow: hidden;
@@ -147,46 +160,52 @@ img {
   height: 101%;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.card-body{
+
+.card-body {
   position: absolute;
   bottom: 0px;
   left: 0;
   margin: 0;
   padding: 20px;
 }
- .card-title {
+
+.card-title {
   color: #fff;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 0;
 }
 
-.index-card .tag{
+.index-card .tag {
   border: 2px solid #FFF;
 }
-.index-card .tag-text{
+
+.index-card .tag-text {
   color: #FFF !important;
 }
-.head-title{
+
+.head-title {
   margin-bottom: 0px;
   font-size: 24px;
 }
 
 // Catégories
-.category-card{
+.category-card {
   width: 400px;
   height: 250px;
   border-radius: 10px;
   background-color: #333231;
 }
-.category-card .flex-btn{
+
+.category-card .flex-btn {
   margin-top: 60px;
 }
-.category-card .flex-btn .btn-white:nth-child(1){
+
+.category-card .flex-btn .btn-white:nth-child(1) {
   margin-right: 30px;
 }
 
-.btn-style{
+.btn-style {
   width: fit-content;
   padding: 20px 40px;
   height: 50px;
@@ -194,13 +213,14 @@ img {
   border: none;
   background-color: #333231;
   color: #FFF;
-  &:hover{
+
+  &:hover {
     opacity: 0.7;
   }
 }
 
 
-.ingredient-image{
+.ingredient-image {
   width: 30px !important;
   height: 30px !important;
   object-fit: cover !important;

@@ -1,97 +1,103 @@
-<div id="<%= dom_id recipe %>" class="row">
-  <div class="col mx-3">
-    <img src="<%= recipe.image %>">
-    <h2 class="py-4">Ingrédients</h2>
-    <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
-      <div class="ingredients mt-3">
-        <div class="ingredient d-flex align-items-center mb-3 py-2">
-          <div class="circle">
-            <span class="inner-circle">
-              <img class="ingredient-image" src="<%= recipe_ingredient.image %>">
-            </span>
-          </div>
-          <div class="ingredient-box-text d-flex align-items-center justify-content-between col">
-            <div class="left d-flex justify-content-center" style="flex-direction: column;">
-              <p class="ingredient-title"><%= recipe_ingredient.title %></p>
+<div class="container">
+  <div id="<%= dom_id recipe %>" class="row">
+    <div class="col mx-3">
+      <img src="<%= recipe.image %>">
+      <h2 class="py-4">Ingrédients</h2>
+      <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
+        <% if recipe_ingredient.quantity.present? %>
+          <div class="ingredients mt-3">
+            <div class="ingredient d-flex align-items-center mb-3 py-2">
+              <div class="circle">
+                <span class="inner-circle">
+                  <img class="ingredient-image" src="<%= recipe_ingredient.image %>">
+                </span>
+              </div>
+              <div class="ingredient-box-text d-flex align-items-center justify-content-between col">
+                <div class="left d-flex justify-content-center" style="flex-direction: column;">
+                  <p class="ingredient-title"><%= recipe_ingredient.title %></p>
+                </div>
+                <div class="ml-auto">
+                  <p class="ingredient-number"><%= recipe_ingredient.quantity %></p>
+                </div>
+              </div>
             </div>
-            <div class="ml-auto">
-              <p class="ingredient-number"><%= recipe_ingredient.quantity %></p>
-            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-1"></div>
-  <div class="col-md-6">
-    <p class="date-crea">Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
-    <h1><%= recipe.title %></h1>
-    <div class="flex-tag d-flex py-2">
-      <% recipe.categories.each do |category| %>
-        <div class="tag d-flex align-items-center justify-content-center">
-          <p class="tag-text my-3 mx-3"><%= category.title %></p>
-        </div>
+        <% end %>
       <% end %>
     </div>
-    <div class="row py-4">
-      <p><%= recipe.description %></p>
-      <p class="col-md-3">Temps total <strong><%= total_time(recipe) %>min</strong></p>
-      <p class="col-md-3">Préparation <strong><%= preparation_time = recipe.preparationtime ? recipe.preparationtime.min : 0%>min</strong></p>
-      <p class="col-md-3">Cuisson <strong><%=cooking_time = recipe.cookingtime ? recipe.cookingtime.min : 0%>min</strong></p>
-      <p class="col-md-3">Repos <strong><%=   resting_time = recipe.restingtime ? recipe.restingtime.min : 0%>min</strong></p>
-    </div>
-    <h2>A savoir avant de commencer</h2>
-    <div class="col py-4 d-flex flex-column flex-md-row">
-      <div class="info-box d-flex align-items-center" style="flex-direction: column; margin-right: 3rem !important;">
-        <svg width="55" height="52" viewBox="0 0 55 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M54.9576 20.8223C55.2324 19.4598 54.1332 17.8247 52.7593 17.8247L37.0964 15.6446L29.9519 1.47415C29.6771 0.929132 29.4023 0.656622 28.8527 0.384113C27.4788 -0.433415 25.8301 0.111604 25.0057 1.47415L18.136 15.6446L2.47309 17.8247C1.64873 17.8247 1.09915 18.0972 0.824364 18.6422C-0.274788 19.7323 -0.274788 21.3673 0.824364 22.4574L12.0907 33.3578L9.34279 48.8908C9.34279 49.4358 9.34279 49.9808 9.61758 50.5259C10.4419 51.8884 12.0907 52.4334 13.4646 51.6159L27.4788 44.2581L41.493 51.6159C41.7678 51.8884 42.3174 51.8884 42.8669 51.8884C43.1417 51.8884 43.1417 51.8884 43.4165 51.8884C44.7904 51.6159 45.8896 50.2533 45.6148 48.6183L42.8669 33.0852L54.1332 22.1849C54.6828 21.9124 54.9576 21.3673 54.9576 20.8223ZM37.9208 30.3602C37.3712 30.9052 37.0964 31.9952 37.0964 32.8127L39.0199 44.2581L28.578 38.8079C28.3032 38.5354 27.7536 38.5354 27.204 38.5354V8.83191L32.425 19.1873C32.6998 20.0048 33.5241 20.5498 34.6233 20.5498L46.1644 22.1849L37.9208 30.3602Z" fill="#F0B036"/>
-        </svg>
-        <p class="py-3" style="margin-bottom:0px;">2,5/5</p>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <p class="date-crea">Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
+      <h1><%= recipe.title %></h1>
+      <div class="flex-tag d-flex py-2">
+        <% recipe.categories.each do |category| %>
+          <div class="tag d-flex align-items-center justify-content-center">
+            <p class="tag-text my-3 mx-3"><%= category.title %></p>
+          </div>
+        <% end %>
       </div>
-      <div class="info-box d-flex align-items-center mx-5" style="flex-direction: column;">
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 32.44V40H44V32.44C48.7787 30.5627 52 25.9253 52 20.6667C52 13.6827 46.3173 8 39.3333 8C38.8133 8 38.3093 8.02933 37.8133 8.088C35.9467 3.304 31.256 0 26 0C20.744 0 16.0533 3.304 14.1867 8.088C13.6907 8.02933 13.1867 8 12.6667 8C5.68267 8 0 13.6827 0 20.6667C0 25.9253 3.22133 30.5627 8 32.44ZM29.3333 20.6667C29.3333 19.5627 30.2293 18.6667 31.3333 18.6667C32.4373 18.6667 33.3333 19.5627 33.3333 20.6667V31.3333C33.3333 32.4373 32.4373 33.3333 31.3333 33.3333C30.2293 33.3333 29.3333 32.4373 29.3333 31.3333V20.6667ZM18.6667 20.6667C18.6667 19.5627 19.5627 18.6667 20.6667 18.6667C21.7707 18.6667 22.6667 19.5627 22.6667 20.6667V31.3333C22.6667 32.4373 21.7707 33.3333 20.6667 33.3333C19.5627 33.3333 18.6667 32.4373 18.6667 31.3333V20.6667ZM44 44V44.6667C44 48.712 40.712 52 36.6667 52H15.3333C11.288 52 8 48.712 8 44.6667V44H44Z" fill="#F06D36"/>
-        </svg>
-        <p class="py-3" style="margin-bottom:0px;"><%= recipe.difficulty %></p>
+      <div class="row py-4">
+        <p><%= recipe.description %></p>
       </div>
-      <div class="info-box d-flex align-items-center mx-5" style="flex-direction: column;">
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M26 0C20.8577 0 15.8309 1.52487 11.5552 4.38179C7.27951 7.23871 3.94702 11.2993 1.97914 16.0502C0.0112656 20.8011 -0.503621 26.0288 0.499594 31.0723C1.50281 36.1158 3.97907 40.7486 7.61523 44.3848C11.2514 48.0209 15.8842 50.4972 20.9277 51.5004C25.9712 52.5036 31.1989 51.9887 35.9498 50.0209C40.7007 48.053 44.7613 44.7205 47.6182 40.4448C50.4751 36.1691 52 31.1423 52 26C52 19.1044 49.2607 12.4912 44.3848 7.61522C39.5088 2.73928 32.8956 0 26 0ZM31.2 20.8C31.6597 20.8 32.1006 20.9826 32.4257 21.3077C32.7507 21.6327 32.9333 22.0736 32.9333 22.5333C32.9333 22.993 32.7507 23.4339 32.4257 23.759C32.1006 24.084 31.6597 24.2667 31.2 24.2667H22.5333V27.7333H31.2C31.6597 27.7333 32.1006 27.9159 32.4257 28.241C32.7507 28.5661 32.9333 29.007 32.9333 29.4667C32.9333 29.9264 32.7507 30.3673 32.4257 30.6923C32.1006 31.0174 31.6597 31.2 31.2 31.2H22.8453C23.2029 32.2115 23.8647 33.0876 24.7398 33.7082C25.6149 34.3289 26.6605 34.6636 27.7333 34.6667H31.2C31.6597 34.6667 32.1006 34.8493 32.4257 35.1743C32.7507 35.4994 32.9333 35.9403 32.9333 36.4C32.9333 36.8597 32.7507 37.3006 32.4257 37.6256C32.1006 37.9507 31.6597 38.1333 31.2 38.1333H27.7333C25.7354 38.1337 23.7987 37.4438 22.251 36.1804C20.7033 34.9169 19.6396 33.1576 19.24 31.2H17.3333C16.8736 31.2 16.4328 31.0174 16.1077 30.6923C15.7826 30.3673 15.6 29.9264 15.6 29.4667C15.6 29.007 15.7826 28.5661 16.1077 28.241C16.4328 27.9159 16.8736 27.7333 17.3333 27.7333H19.0667V24.2667H17.3333C16.8736 24.2667 16.4328 24.084 16.1077 23.759C15.7826 23.4339 15.6 22.993 15.6 22.5333C15.6 22.0736 15.7826 21.6327 16.1077 21.3077C16.4328 20.9826 16.8736 20.8 17.3333 20.8H19.24C19.6396 18.8424 20.7033 17.083 22.251 15.8196C23.7987 14.5562 25.7354 13.8663 27.7333 13.8667H31.2C31.6597 13.8667 32.1006 14.0493 32.4257 14.3743C32.7507 14.6994 32.9333 15.1403 32.9333 15.6C32.9333 16.0597 32.7507 16.5006 32.4257 16.8256C32.1006 17.1507 31.6597 17.3333 31.2 17.3333H27.7333C26.6605 17.3363 25.6149 17.6711 24.7398 18.2918C23.8647 18.9124 23.2029 19.7885 22.8453 20.8H31.2Z" fill="#FFCA01"/>
-        </svg>
-        <p class="py-3" style="margin-bottom:0px;"><%= recipe.price %></p>
-      </div>
-      <div class="info-box d-flex align-items-center mx-5" style="flex-direction: column;">
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 32.44V40H44V32.44C48.7787 30.5627 52 25.9253 52 20.6667C52 13.6827 46.3173 8 39.3333 8C38.8133 8 38.3093 8.02933 37.8133 8.088C35.9467 3.304 31.256 0 26 0C20.744 0 16.0533 3.304 14.1867 8.088C13.6907 8.02933 13.1867 8 12.6667 8C5.68267 8 0 13.6827 0 20.6667C0 25.9253 3.22133 30.5627 8 32.44ZM29.3333 20.6667C29.3333 19.5627 30.2293 18.6667 31.3333 18.6667C32.4373 18.6667 33.3333 19.5627 33.3333 20.6667V31.3333C33.3333 32.4373 32.4373 33.3333 31.3333 33.3333C30.2293 33.3333 29.3333 32.4373 29.3333 31.3333V20.6667ZM18.6667 20.6667C18.6667 19.5627 19.5627 18.6667 20.6667 18.6667C21.7707 18.6667 22.6667 19.5627 22.6667 20.6667V31.3333C22.6667 32.4373 21.7707 33.3333 20.6667 33.3333C19.5627 33.3333 18.6667 32.4373 18.6667 31.3333V20.6667ZM44 44V44.6667C44 48.712 40.712 52 36.6667 52H15.3333C11.288 52 8 48.712 8 44.6667V44H44Z" fill="#F06D36"/>
-        </svg>
-        <p class="py-3" style="margin-bottom:0px;">3,5/5</p>
-      </div>
-      <div class="info-box d-flex align-items-center mx-5" style="flex-direction: column;">
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 32.44V40H44V32.44C48.7787 30.5627 52 25.9253 52 20.6667C52 13.6827 46.3173 8 39.3333 8C38.8133 8 38.3093 8.02933 37.8133 8.088C35.9467 3.304 31.256 0 26 0C20.744 0 16.0533 3.304 14.1867 8.088C13.6907 8.02933 13.1867 8 12.6667 8C5.68267 8 0 13.6827 0 20.6667C0 25.9253 3.22133 30.5627 8 32.44ZM29.3333 20.6667C29.3333 19.5627 30.2293 18.6667 31.3333 18.6667C32.4373 18.6667 33.3333 19.5627 33.3333 20.6667V31.3333C33.3333 32.4373 32.4373 33.3333 31.3333 33.3333C30.2293 33.3333 29.3333 32.4373 29.3333 31.3333V20.6667ZM18.6667 20.6667C18.6667 19.5627 19.5627 18.6667 20.6667 18.6667C21.7707 18.6667 22.6667 19.5627 22.6667 20.6667V31.3333C22.6667 32.4373 21.7707 33.3333 20.6667 33.3333C19.5627 33.3333 18.6667 32.4373 18.6667 31.3333V20.6667ZM44 44V44.6667C44 48.712 40.712 52 36.6667 52H15.3333C11.288 52 8 48.712 8 44.6667V44H44Z" fill="#F06D36"/>
-        </svg>
-        <p class="py-3" style="margin-bottom:0px;">3,5/5</p>
-      </div>
-    </div>
-    <h2>Recette</h2>
-    <div class="flex">
-      <div class="step d-flex align-items-center mb-3 py-2">
-        <div class="circle">
-          <span class="inner-circle">1</span>
+      <div class="row py-2">
+        <div class="col-md-3">
+          <p>Préparation</p>
+          <p><strong><%= preparation_time = recipe.preparationtime ? recipe.preparationtime.min : 0 %>min</strong></p>
         </div>
-        <p><%= recipe.step1 %></p>
-      </div>
-      <div class="step d-flex align-items-center mb-3 py-2">
-        <div class="circle">
-          <span class="inner-circle">2</span>
+        <div class="col-md-3">
+          <p>Cuisson</p>
+          <p><strong><%= cooking_time = recipe.cookingtime ? recipe.cookingtime.min : 0 %>min</strong></p>
         </div>
-        <p><%= recipe.step2 %></p>
-      </div>
-      <div class="step d-flex align-items-center mb-3 py-2">
-        <div class="circle">
-          <span class="inner-circle">3</span>
+        <div class="col-md-3">
+          <p>Repos</p>
+          <p><strong><%= resting_time = recipe.restingtime ? recipe.restingtime.min : 0 %>min</strong></p>
         </div>
-        <p><%= recipe.step3 %></p>
+        <div class="col-md-3">
+          <p>Temps total</p>
+          <p><strong><%= total_time(recipe) %>min</strong></p>
+        </div>
+      </div>
+      <h2>A savoir avant de commencer</h2>
+      <div class="col py-4 d-flex flex-column flex-md-row">
+        <div class="info-box d-flex align-items-center" style="flex-direction: column; margin-right: 3rem !important;">
+          <svg width="55" height="52" viewBox="0 0 55 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M54.9576 20.8223C55.2324 19.4598 54.1332 17.8247 52.7593 17.8247L37.0964 15.6446L29.9519 1.47415C29.6771 0.929132 29.4023 0.656622 28.8527 0.384113C27.4788 -0.433415 25.8301 0.111604 25.0057 1.47415L18.136 15.6446L2.47309 17.8247C1.64873 17.8247 1.09915 18.0972 0.824364 18.6422C-0.274788 19.7323 -0.274788 21.3673 0.824364 22.4574L12.0907 33.3578L9.34279 48.8908C9.34279 49.4358 9.34279 49.9808 9.61758 50.5259C10.4419 51.8884 12.0907 52.4334 13.4646 51.6159L27.4788 44.2581L41.493 51.6159C41.7678 51.8884 42.3174 51.8884 42.8669 51.8884C43.1417 51.8884 43.1417 51.8884 43.4165 51.8884C44.7904 51.6159 45.8896 50.2533 45.6148 48.6183L42.8669 33.0852L54.1332 22.1849C54.6828 21.9124 54.9576 21.3673 54.9576 20.8223ZM37.9208 30.3602C37.3712 30.9052 37.0964 31.9952 37.0964 32.8127L39.0199 44.2581L28.578 38.8079C28.3032 38.5354 27.7536 38.5354 27.204 38.5354V8.83191L32.425 19.1873C32.6998 20.0048 33.5241 20.5498 34.6233 20.5498L46.1644 22.1849L37.9208 30.3602Z" fill="#F0B036"/>
+          </svg>
+          <p class="py-3" style="margin-bottom:0px;">2,5/5</p>
+        </div>
+        <div class="info-box d-flex align-items-center mx-5" style="flex-direction: column;">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 32.44V40H44V32.44C48.7787 30.5627 52 25.9253 52 20.6667C52 13.6827 46.3173 8 39.3333 8C38.8133 8 38.3093 8.02933 37.8133 8.088C35.9467 3.304 31.256 0 26 0C20.744 0 16.0533 3.304 14.1867 8.088C13.6907 8.02933 13.1867 8 12.6667 8C5.68267 8 0 13.6827 0 20.6667C0 25.9253 3.22133 30.5627 8 32.44ZM29.3333 20.6667C29.3333 19.5627 30.2293 18.6667 31.3333 18.6667C32.4373 18.6667 33.3333 19.5627 33.3333 20.6667V31.3333C33.3333 32.4373 32.4373 33.3333 31.3333 33.3333C30.2293 33.3333 29.3333 32.4373 29.3333 31.3333V20.6667ZM18.6667 20.6667C18.6667 19.5627 19.5627 18.6667 20.6667 18.6667C21.7707 18.6667 22.6667 19.5627 22.6667 20.6667V31.3333C22.6667 32.4373 21.7707 33.3333 20.6667 33.3333C19.5627 33.3333 18.6667 32.4373 18.6667 31.3333V20.6667ZM44 44V44.6667C44 48.712 40.712 52 36.6667 52H15.3333C11.288 52 8 48.712 8 44.6667V44H44Z" fill="#F06D36"/>
+          </svg>
+          <p class="py-3" style="margin-bottom:0px;"><%= recipe.difficulty %></p>
+        </div>
+        <div class="info-box d-flex align-items-center mx-5" style="flex-direction: column;">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26 0C20.8577 0 15.8309 1.52487 11.5552 4.38179C7.27951 7.23871 3.94702 11.2993 1.97914 16.0502C0.0112656 20.8011 -0.503621 26.0288 0.499594 31.0723C1.50281 36.1158 3.97907 40.7486 7.61523 44.3848C11.2514 48.0209 15.8842 50.4972 20.9277 51.5004C25.9712 52.5036 31.1989 51.9887 35.9498 50.0209C40.7007 48.053 44.7613 44.7205 47.6182 40.4448C50.4751 36.1691 52 31.1423 52 26C52 19.1044 49.2607 12.4912 44.3848 7.61522C39.5088 2.73928 32.8956 0 26 0ZM31.2 20.8C31.6597 20.8 32.1006 20.9826 32.4257 21.3077C32.7507 21.6327 32.9333 22.0736 32.9333 22.5333C32.9333 22.993 32.7507 23.4339 32.4257 23.759C32.1006 24.084 31.6597 24.2667 31.2 24.2667H22.5333V27.7333H31.2C31.6597 27.7333 32.1006 27.9159 32.4257 28.241C32.7507 28.5661 32.9333 29.007 32.9333 29.4667C32.9333 29.9264 32.7507 30.3673 32.4257 30.6923C32.1006 31.0174 31.6597 31.2 31.2 31.2H22.8453C23.2029 32.2115 23.8647 33.0876 24.7398 33.7082C25.6149 34.3289 26.6605 34.6636 27.7333 34.6667H31.2C31.6597 34.6667 32.1006 34.8493 32.4257 35.1743C32.7507 35.4994 32.9333 35.9403 32.9333 36.4C32.9333 36.8597 32.7507 37.3006 32.4257 37.6256C32.1006 37.9507 31.6597 38.1333 31.2 38.1333H27.7333C25.7354 38.1337 23.7987 37.4438 22.251 36.1804C20.7033 34.9169 19.6396 33.1576 19.24 31.2H17.3333C16.8736 31.2 16.4328 31.0174 16.1077 30.6923C15.7826 30.3673 15.6 29.9264 15.6 29.4667C15.6 29.007 15.7826 28.5661 16.1077 28.241C16.4328 27.9159 16.8736 27.7333 17.3333 27.7333H19.0667V24.2667H17.3333C16.8736 24.2667 16.4328 24.084 16.1077 23.759C15.7826 23.4339 15.6 22.993 15.6 22.5333C15.6 22.0736 15.7826 21.6327 16.1077 21.3077C16.4328 20.9826 16.8736 20.8 17.3333 20.8H19.24C19.6396 18.8424 20.7033 17.083 22.251 15.8196C23.7987 14.5562 25.7354 13.8663 27.7333 13.8667H31.2C31.6597 13.8667 32.1006 14.0493 32.4257 14.3743C32.7507 14.6994 32.9333 15.1403 32.9333 15.6C32.9333 16.0597 32.7507 16.5006 32.4257 16.8256C32.1006 17.1507 31.6597 17.3333 31.2 17.3333H27.7333C26.6605 17.3363 25.6149 17.6711 24.7398 18.2918C23.8647 18.9124 23.2029 19.7885 22.8453 20.8H31.2Z" fill="#FFCA01"/>
+          </svg>
+          <p class="py-3" style="margin-bottom:0px;"><%= recipe.price %></p>
+        </div>
+      </div>
+      <h2>Recette</h2>
+      <div class="flex">
+        <div class="step d-flex align-items-center mb-3 py-2">
+          <div class="circle">
+            <span class="inner-circle">1</span>
+          </div>
+          <p><%= recipe.step1 %></p>
+        </div>
+        <div class="step d-flex align-items-center mb-3 py-2">
+          <div class="circle">
+            <span class="inner-circle">2</span>
+          </div>
+          <p><%= recipe.step2 %></p>
+        </div>
+        <div class="step d-flex align-items-center mb-3 py-2">
+          <div class="circle">
+            <span class="inner-circle">3</span>
+          </div>
+          <p><%= recipe.step3 %></p>
+        </div>
       </div>
     </div>
   </div>
