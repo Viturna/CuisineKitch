@@ -1,115 +1,93 @@
 <div class="mx-4">
-<%= form_with(model: recipe) do |form| %>
-  <% if recipe.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
-      <ul>
-        <% recipe.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="mb-4">
-    <%= form.label "Titre de la recette", style: "display: block", class: "form-label" %>
-    <%= form.text_field :title, class: "form-control", placeholder: "Lasagne au chocolat" %>
-  </div>
-
-  <div class="mb-4">
-    <strong>Choisir les catégories :</strong><br>
-    <% Category.all.each do |category| %>
-      <%= check_box_tag "recipe[category_ids][]", category.id, @recipe.categories.include?(category), id: "recipe_category_ids_#{category.id}" %>
-      <%= label_tag "recipe_category_ids_#{category.id}", category.title %><br>
-    <% end %>
-  </div>
-
-  <!--<div class="mb-4">
-    <strong>Choisir les ingrédients :</strong><br>
-    <% Ingredient.all.each do |ingredient| %>
-      <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.categories.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}" %>
-      <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
-    <% end %>
-  </div>-->
-  <div class="mb-4">
-  <strong>Choisir les ingrédients :</strong><br>
-    <div class="row row-cols-3">
-      <% Ingredient.all.each do |ingredient| %>
-      <div class="col">
-        <div>
-          <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.categories.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox", data: { ingredient_id: ingredient.id } %>
-          <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
-        </div>
-        <div class="mb-4 input-quantite">
-          <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", nil, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
-        </div>
+  <%= form_with(model: recipe) do |form| %>
+    <% if recipe.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+        <ul>
+          <% recipe.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
       </div>
+    <% end %>
+    <div class="mb-4">
+      <%= form.label "Titre de la recette", style: "display: block", class: "form-label" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "Lasagne au chocolat" %>
+    </div>
+    <div class="mb-4">
+      <strong>Choisir les catégories :</strong><br>
+      <% Category.all.each do |category| %>
+        <%= check_box_tag "recipe[category_ids][]", category.id, @recipe.categories.include?(category), id: "recipe_category_ids_#{category.id}", class: "form-check-input" %>
+        <%= label_tag "recipe_category_ids_#{category.id}", category.title %><br>
       <% end %>
     </div>
-
-</div>
-
-  <div class ="row row-cols-3 mb-4 px-0">
-    <div class="col">
-      <%= form.label "Temps de préparation", style: "display: block"%>
-      <%= form.time_field :preparationtime, class: "form-control form-time" %>
+    <div class="mb-4">
+      <strong>Choisir les ingrédients :</strong><br>
+      <div class="row row-cols-3">
+        <% Ingredient.all.each do |ingredient| %>
+          <div class="col">
+            <div>
+              <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.categories.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox form-check-input", data: { ingredient_id: ingredient.id } %>
+              <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
+            </div>
+            <div class="mb-4 input-quantite">
+              <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", nil, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <div class="col">
-      <%= form.label "Temps de cuisson", style: "display: block"%>
-      <%= form.time_field :cookingtime, class: "form-control form-time"  %>
+    <div class ="row row-cols-3 mb-4 px-0">
+      <div class="col">
+        <%= form.label "Temps de préparation", style: "display: block"%>
+        <%= form.time_field :preparationtime, class: "form-control form-time" %>
+      </div>
+      <div class="col">
+        <%= form.label "Temps de cuisson", style: "display: block"%>
+        <%= form.time_field :cookingtime, class: "form-control form-time"  %>
+      </div>
+      <div class="col">
+        <%= form.label "Temps de repos", style: "display: block"%>
+        <%= form.time_field :restingtime, class: "form-control form-time"  %>
+      </div>
     </div>
-
-    <div class="col">
-      <%= form.label "Temps de repos", style: "display: block"%>
-      <%= form.time_field :restingtime, class: "form-control form-time"  %>
+    <div class="mb-4">
+      <%= form.label "Description", style: "display: block", class: "mb-2" %>
+      <%= form.text_area :description, class: "form-control", placeholder: "Description de votre recette" %>
     </div>
-  </div>
-
-  <div class="mb-4">
-    <%= form.label "Description", style: "display: block", class: "mb-2" %>
-    <%= form.text_area :description, class: "form-control", placeholder: "Description de votre recette" %>
-  </div>
-
-  <div class="row row-cols-2 mb-4 px-0">
-    <div class="col">
-      <%= form.label "Niveau de difficulté", style: "display: block", class: "form-label" %>
-      <%= form.select :difficulty, options_for_select(["Très facile", "Facile", "Intermédiaire", "Difficile"]), { prompt: "Choisir le niveau de difficulté" }, class: "form-control" %>
+    <div class="row row-cols-2 mb-4 px-0">
+      <div class="col">
+        <%= form.label "Niveau de difficulté", style: "display: block", class: "form-label" %>
+        <%= form.select :difficulty, options_for_select(["Très facile", "Facile", "Intermédiaire", "Difficile"]), { prompt: "Choisir le niveau de difficulté" }, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.label "Budget", style: "display: block", class: "form-label" %>
+        <%= form.select :price, options_for_select(["Bon marché", "Ultra cher"]), { prompt: "Choisir le niveau de budeget" }, class: "form-control" %>
+      </div>
     </div>
-
-    <div class="col">
-      <%= form.label "Budget", style: "display: block", class: "form-label" %>
-      <%= form.select :price, options_for_select(["Bon marché", "Ultra cher"]), { prompt: "Choisir le niveau de budeget" }, class: "form-control" %>
+    <div class="mb-4">
+      <%= form.label "Etape 1", style: "display: block", class: "mb-2" %>
+      <%= form.text_area :step1, class: "form-control", placeholder: "Descriptif de l'étape 1" %>
     </div>
-  </div>
-
-  <div class="mb-4">
-    <%= form.label "Etape 1", style: "display: block", class: "mb-2" %>
-    <%= form.text_area :step1, class: "form-control", placeholder: "Descriptif de l'étape 1" %>
-  </div>
-
-  <div class="mb-4">
-    <%= form.label "Etape 2", style: "display: block", class: "mb-2" %>
-    <%= form.text_area :step2, class: "form-control", placeholder: "Descriptif de l'étape 2"  %>
-  </div>
-
-  <div class="mb-4">
-    <%= form.label "Etape 3", style: "display: block", class: "mb-2" %>
-    <%= form.text_area :step3, class: "form-control", placeholder: "Descriptif de l'étape 3"  %>
-  </div>
-  <div class="mb-4">
-    <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
-    <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image"  %>
-  </div>
-
-  <div class="d-flex align-items-center justify-content-end gap-5">
-    <div>
-      <%= link_to "Annuler", recipes_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+    <div class="mb-4">
+      <%= form.label "Etape 2", style: "display: block", class: "mb-2" %>
+      <%= form.text_area :step2, class: "form-control", placeholder: "Descriptif de l'étape 2"  %>
     </div>
-    <div class="ml-4">
-      <%= form.submit "Valider", class: "btn btn-dark btn-lg" %>
+    <div class="mb-4">
+      <%= form.label "Etape 3", style: "display: block", class: "mb-2" %>
+      <%= form.text_area :step3, class: "form-control", placeholder: "Descriptif de l'étape 3"  %>
     </div>
-  </div>
-<% end %>
+    <div class="mb-4">
+      <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
+      <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image"  %>
+    </div>
+    <div class="d-flex align-items-center justify-content-end gap-5">
+      <div>
+        <%= link_to "Annuler", recipes_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+      </div>
+      <div class="ml-4">
+        <%= form.submit "Valider", class: "btn btn-dark btn-lg" %>
+      </div>
+    </div>
+  <% end %>
 </div>
