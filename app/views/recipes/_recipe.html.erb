@@ -101,4 +101,13 @@
       </div>
     </div>
   </div>
+
+  <div class="d-flex gap-4 justify-content-end">
+    <div class="ml-4">
+      <%= link_to "Modifier cette recette", edit_recipe_path(@recipe),  class: "btn btn-dark btn-custom" %>
+    </div>
+    <div class="ml-4">
+    <%= button_to "Supprimer cette recette", @recipe, method: :delete, class: "btn btn-dark btn-custom" %>
+    </div>
+  </div>
 </div>
