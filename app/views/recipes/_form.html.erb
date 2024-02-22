@@ -25,6 +25,14 @@
     <% end %>
   </div>
 
+  <div class="mb-4">
+    <strong>Choisir les ingrédients :</strong><br>
+    <% Ingredient.all.each do |ingredient| %>
+      <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.categories.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}" %>
+      <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
+    <% end %>
+  </div>
+
   <div class ="d-inline-flex gap-5 justify-content-between mb-4">
     <div>
       <%= form.label "Temps de préparation", style: "display: block", class: "mb-2" %>
