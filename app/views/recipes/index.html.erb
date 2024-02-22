@@ -28,7 +28,7 @@
     <li class="categorie-link">JSP</li>
   </ul>
   <% @recipes.each do |recipe| %>
-    <div class="col-lg-4 mb-3 index-card">
+    <div class="col-lg-4 mb-3 index-card pt-4">
       <%= link_to recipe do %>
         <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
           <div class="overlay"></div>
