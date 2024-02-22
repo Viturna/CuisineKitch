@@ -79,10 +79,9 @@
       </div>
       <p><strong>Ingrédients:</strong>
         <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
-          <%= recipe_ingredient.ingredient.title %>
+          <%= recipe_ingredient.title %>
           <%= recipe_ingredient.quantity %>
         <% end %>
-
       </p>
 
 

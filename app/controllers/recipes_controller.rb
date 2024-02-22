@@ -77,7 +77,9 @@ class RecipesController < ApplicationController
       ingredient_ids_with_quantities.each do |ingredient_id, quantity|
         next if quantity.blank?
 
-        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity)
+        ingredient = Ingredient.find(ingredient_id)
+        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, title: ingredient.title)
       end
     end
+
 end
