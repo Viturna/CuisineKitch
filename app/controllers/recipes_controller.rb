@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [])
+      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :price, :difficulty, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [])
     end
 
     # Méthode pour sauvegarder les ingrédients avec les quantités
