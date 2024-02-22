@@ -71,6 +71,7 @@
       <p class="date-crea">Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
       <h1><%= recipe.title %></h1>
       <p><strong>Categories:</strong> <%= recipe.categories.pluck(:title).join(", ") %></p>
+      <p><strong>Ingrédients:</strong> <%= recipe.ingredients.pluck(:title).join(", ") %></p>
 
       <!--<div class="flex-tag d-flex py-2">
         <div class="tag d-flex align-items-center justify-content-center">
