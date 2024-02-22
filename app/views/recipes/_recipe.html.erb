@@ -1,8 +1,14 @@
 <div class="container pt-5">
   <div id="<%= dom_id recipe %>" class="row grid">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <img src="<%= recipe.image %>">
       <h2 class="py-4">Ingrédients</h2>
+      <div id="personCount">
+        <label for="personInput">Nombre de personnes :</label>
+        <button id="minusBtn">-</button>
+        <input type="number" id="personInput" value="1" min="1">
+        <button id="plusBtn">+</button>
+      </div>
       <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
         <% if recipe_ingredient.quantity.present? %>
           <div class="ingredients mt-3">
@@ -17,7 +23,8 @@
                   <p class="ingredient-title"><%= recipe_ingredient.title %></p>
                 </div>
                 <div class="ml-auto">
-                  <p class="ingredient-number"><%= recipe_ingredient.quantity %></p>
+                  <!-- Quantité d'ingrédient ajustée selon le nombre de personnes -->
+                  <p class="ingredient-number" data-original-quantity="<%= recipe_ingredient.quantity %>"><%= recipe_ingredient.quantity * 1 %></p>
                 </div>
               </div>
             </div>
@@ -25,6 +32,7 @@
         <% end %>
       <% end %>
     </div>
+    <div class="col-md-1"></div>
     <div class="col-md-6">
       <p class="date-crea">Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
       <h1><%= recipe.title %></h1>
@@ -109,3 +117,39 @@
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const plusBtn = document.getElementById('plusBtn');
+    const minusBtn = document.getElementById('minusBtn');
+    const personInput = document.getElementById('personInput');
+
+    // Fonction pour mettre à jour les quantités des ingrédients
+    function updateIngredientQuantities() {
+      const ingredientsQuantities = document.querySelectorAll('.ingredient-number');
+      const numberOfPeople = parseInt(personInput.value);
+      ingredientsQuantities.forEach(function(ingredientQuantityElement) {
+        const originalQuantity = parseFloat(ingredientQuantityElement.dataset.originalQuantity);
+        const newQuantity = originalQuantity * numberOfPeople;
+        // Mettez à jour la quantité en multipliant par le nombre de personnes
+        // Si la partie décimale est égale à zéro, n'affichez pas de décimales
+        ingredientQuantityElement.textContent = newQuantity % 1 === 0 ? newQuantity.toFixed(0) : newQuantity.toFixed(2).replace(/\.?0+$/, '');
+      });
+    }
+
+    // Écouteurs d'événements pour les boutons + et -
+    plusBtn.addEventListener('click', function() {
+      personInput.value = parseInt(personInput.value) + 1;
+      updateIngredientQuantities(); // Mettre à jour les quantités lorsque le nombre de personnes change
+    });
+
+    minusBtn.addEventListener('click', function() {
+      if (parseInt(personInput.value) > 1) {
+        personInput.value = parseInt(personInput.value) - 1;
+        updateIngredientQuantities(); // Mettre à jour les quantités lorsque le nombre de personnes change
+      }
+    });
+
+    // Mettre à jour les quantités des ingrédients lors du chargement de la page
+    updateIngredientQuantities();
+  });
+</script>
