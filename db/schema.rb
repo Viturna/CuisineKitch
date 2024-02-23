@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_23_085324) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_23_100527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,9 +67,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_23_085324) do
     t.text "step5"
     t.text "step6"
     t.text "step7"
-    t.text "step8"
     t.text "step10"
     t.text "step9"
+    t.text "step8"
   end
 
   add_foreign_key "recipe_categories", "categories"
