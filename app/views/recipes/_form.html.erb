@@ -70,18 +70,18 @@
         <%= form.select :price, options_for_select(["Bon marché", "Ultra cher"]), { prompt: "Choisir le niveau de budeget" }, class: "form-control" %>
       </div>
     </div>
-    <div class="mb-4">
-      <%= form.label "Etape 1", style: "display: block", class: "mb-2" %>
-      <%= form.text_area :step1, class: "form-control", placeholder: "Descriptif de l'étape 1" %>
-    </div>
-    <div class="mb-4">
-      <%= form.label "Etape 2", style: "display: block", class: "mb-2" %>
-      <%= form.text_area :step2, class: "form-control", placeholder: "Descriptif de l'étape 2"  %>
-    </div>
-    <div class="mb-4">
-      <%= form.label "Etape 3", style: "display: block", class: "mb-2" %>
-      <%= form.text_area :step3, class: "form-control", placeholder: "Descriptif de l'étape 3"  %>
-    </div>
+    
+    <!-- Boucle pour afficher les étapes -->
+    <% (1..10).each do |step_number| %>
+      <% step_content = recipe.send("step#{step_number}") %>
+      <% if step_content.present? %>
+        <div class="mb-4">
+          <%= form.label "Etape #{step_number}", style: "display: block", class: "mb-2" %>
+          <%= form.text_area "step#{step_number}", value: step_content, class: "form-control", placeholder: "Descriptif de l'étape #{step_number}" %>
+        </div>
+      <% end %>
+    <% end %>
+
     <div class="mb-4">
       <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
       <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image"  %>
