@@ -52,8 +52,16 @@ end
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
+    @recipe = Recipe.find(params[:id])
+
     respond_to do |format|
       if @recipe.update(recipe_params)
+        # Supprime d'abord tous les ingrédients de la recette
+        @recipe.recipe_ingredients.destroy_all
+
+        # Enregistre ensuite les nouveaux ingrédients avec les nouvelles valeurs
+        save_recipe_ingredients(@recipe)
+
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -62,6 +70,7 @@ end
       end
     end
   end
+
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
