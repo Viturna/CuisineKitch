@@ -26,8 +26,8 @@ strong {
 }
 
 .form-control {
-  border-radius: 20px;
-  border-color: #010101;
+  border: 1px solid #333231;
+  border-radius: 10px;
   min-height: 55px;
   background-color: #FBF5EF;
 
@@ -61,13 +61,15 @@ strong {
 .form-ingredient img {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  object-fit: cover !important;
 }
 
 .form-ingredient {
-  display: flex;
-  align-items: center;
+ flex-direction: column;
   cursor: pointer;
+  border: 1px solid #333231;
+  padding: 20px 30px;
+  border-radius: 20px;
 }
 
 .form-ingredient.selected {
