@@ -17,7 +17,6 @@ module Cuisinekitch
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Set the default locale to French
-    config.i18n.default_locale = :fr
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end
