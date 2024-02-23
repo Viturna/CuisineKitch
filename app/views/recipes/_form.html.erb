@@ -16,10 +16,14 @@
     </div>
     <div class="mb-4">
       <strong>Choisir les catégories :</strong><br>
-      <% Category.all.each do |category| %>
-        <%= check_box_tag "recipe[category_ids][]", category.id, @recipe.categories.include?(category), id: "recipe_category_ids_#{category.id}", class: "form-check-input" %>
-        <%= label_tag "recipe_category_ids_#{category.id}", category.title %><br>
-      <% end %>
+      <div class="row row-cols-4">
+        <% Category.all.each do |category| %>
+          <div class="col form-check form-switch">
+            <%= check_box_tag "recipe[category_ids][]", category.id, @recipe.categories.include?(category), id: "recipe_category_ids_#{category.id}", class: "form-check-input" %>
+            <%= label_tag "recipe_category_ids_#{category.id}", category.title, class: "form-check-label" %><br>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="mb-4">
       <strong>Choisir les ingrédients :</strong><br>
@@ -28,7 +32,8 @@
           <div class="col py-4">
             <div class="form-ingredient d-flex align-items-center justify-content-center" data-ingredient-id="<%= ingredient.id %>">
               <img src="<%= ingredient.image %>">
-            <p> <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title, class: "pt-3" %></p><br>
+              <p> <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title, class: "pt-3" %></p>
+              <br>
             </div>
             <div class="row row-cols-2 py-4 ingredient-fields" id="ingredient_fields_<%= ingredient.id %>">
               <div class="col">
@@ -110,7 +115,6 @@
     return true; // Autorise la soumission du formulaire si l'URL est valide
   }
 </script>
-
 <script>
   (function() {
     const formIngredients = document.querySelectorAll('.form-ingredient');
