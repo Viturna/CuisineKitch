@@ -56,3 +56,20 @@ strong {
     opacity: 0.7;
   }
 }
+
+
+.form-ingredient img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.form-ingredient {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.form-ingredient.selected {
+  background-color: lightblue; /* Style à appliquer lorsque l'ingrédient est sélectionné */
+}
