@@ -81,14 +81,24 @@
         <%= form.number_field :nbperson, class: "form-control" %>
       </div>
     </div>
-    <!-- Boucle pour afficher les étapes -->
-    <% (1..10).each do |step_number| %>
-      <% step_content = recipe.send("step#{step_number}") %>
-      <div class="mb-4">
-        <%= form.label "Etape #{step_number}", style: "display: block", class: "mb-2" %>
-        <%= form.text_area "step#{step_number}", value: step_content, class: "form-control", placeholder: "Descriptif de l'étape #{step_number}" %>
+    <p>Choisir le nombre d'étape :</p>
+    <div id="etapeCount" class="etape-count-container d-inline-block mb-2">
+      <div class="etape-count-controls">
+        <span class="button-like button-moins" data-action="minus">-</span>
+        <input type="text" id="etapeInput" name="etapeInput" value="1" min="1" max="10" readonly>
+        <span class="span-etape">étapes</span>
+        <span class="button-like button-plus" data-action="plus">+</span>
       </div>
-    <% end %>
+    </div>
+    <div id="formStepsContainer">
+      <% (1..10).each do |step_number| %>
+        <div class="mb-4 step-container" data-step-number="<%= step_number %>">
+          <%= form.label "Etape #{step_number}", style: "display: block", class: "mb-2" %>
+          <%= form.text_area "step#{step_number}", class: "form-control", placeholder: "Descriptif de l'étape #{step_number}" %>
+        </div>
+      <% end %>
+    </div>
+
     <div class="mb-4">
       <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
       <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image", id: "recipe-image-url" %>
@@ -118,6 +128,9 @@
 <script>
   (function() {
     const formIngredients = document.querySelectorAll('.form-ingredient');
+    const etapeInput = document.getElementById('etapeInput');
+    const formStepsContainer = document.getElementById('formStepsContainer');
+    const etapeCount = document.getElementById('etapeCount');
 
     formIngredients.forEach(function(ingredient) {
       ingredient.addEventListener('click', function() {
@@ -134,5 +147,35 @@
         }
       });
     });
+
+    function updateSteps() {
+        const stepCount = parseInt(etapeInput.value);
+        const stepContainers = formStepsContainer.querySelectorAll('.step-container');
+
+        stepContainers.forEach(function(stepContainer, index) {
+            stepContainer.style.display = index < stepCount ? 'block' : 'none';
+        });
+    }
+
+    etapeCount.addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.classList.contains('button-like')) {
+            const action = target.dataset.action;
+            const currentValue = parseInt(etapeInput.value);
+
+            if (action === 'plus' && currentValue < 10) {
+                etapeInput.value = currentValue + 1;
+                updateSteps();
+            } else if (action === 'minus' && currentValue > 1) {
+                etapeInput.value = currentValue - 1;
+                updateSteps();
+            }
+            updateSteps(); 
+        }
+    });
+
+    // Appel initial pour afficher les étapes initiales
+    updateSteps();
+
   })();
 </script>
