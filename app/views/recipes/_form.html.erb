@@ -25,21 +25,25 @@
       <strong>Choisir les ingrédients :</strong><br>
       <div class="row row-cols-3">
         <% Ingredient.all.each do |ingredient| %>
-          <div class="col">
-            <div>
-              <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.categories.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox form-check-input", data: { ingredient_id: ingredient.id } %>
-              <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
-            </div>
-            <div row>
-              <div class="mb-4 input-quantite">
-                <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", nil, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
-              </div>
-              <div class="col">
-                <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)"]), class: "form-control" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+  <div class="col">
+    <div>
+      <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox form-check-input", data: { ingredient_id: ingredient.id } %>
+      <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
+    </div>
+    <div row>
+      <div class="mb-4 input-quantite">
+        <% quantity = @quantities[ingredient.id] %>
+        <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
+      </div>
+      <div class="col">
+        <% unity = @unities[ingredient.id] %>
+        <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)"], unity), class: "form-control" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
       </div>
     </div>
     <div class ="row row-cols-3 mb-4 px-0">

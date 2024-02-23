@@ -19,7 +19,17 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
+    @recipe = Recipe.find(params[:id])
+    @quantities = {}
+    @unities = {}
+  
+    # Pour chaque ingrédient de la recette, récupérez la quantité et l'unité
+    @recipe.recipe_ingredients.each do |recipe_ingredient|
+      @quantities[recipe_ingredient.ingredient_id] = recipe_ingredient.quantity
+      @unities[recipe_ingredient.ingredient_id] = recipe_ingredient.unity
+    end
   end
+  
 
   # POST /recipes or /recipes.json
   def create
@@ -89,10 +99,6 @@ class RecipesController < ApplicationController
       end
     end
     
-
-
-
-
 
     def delete_associated_entries(recipe)
       recipe.recipe_ingredients.destroy_all
