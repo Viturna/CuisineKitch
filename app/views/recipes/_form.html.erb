@@ -1,5 +1,5 @@
 <div class="mx-4">
-  <%= form_with(model: recipe) do |form| %>
+  <%= form_with(model: recipe, html: { onsubmit: "return validateImageURL();" }) do |form| %>
     <% if recipe.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -82,15 +82,27 @@
     <% end %>
     <div class="mb-4">
       <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
-      <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image"  %>
+      <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image", id: "recipe-image-url" %>
     </div>
     <div class="d-flex align-items-center justify-content-end gap-5">
-      <div>
-        <%= link_to "Annuler", @recipe, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
-      </div>
-      <div class="ml-4">
-        <%= form.submit "Valider", class: "btn btn-dark btn-lg" %>
-      </div>
+    <div>
+      <%= link_to "Annuler", @recipe, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
     </div>
-  <% end %>
-</div>
+    <div class="ml-4">
+      <%= form.submit "Valider", class: "btn btn-dark btn-lg" %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  function validateImageURL() {
+    var imageURL = document.getElementById('recipe-image-url').value;
+    var urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+
+    if (!urlRegex.test(imageURL)) {
+      alert("Veuillez entrer une URL d'image valide.");
+      return false; // Empêche la soumission du formulaire si l'URL n'est pas valide
+    }
+    return true; // Autorise la soumission du formulaire si l'URL est valide
+  }
+</script>
