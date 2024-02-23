@@ -1,0 +1,75 @@
+<div class="container grid">
+  <div class="pt-5" style="padding-right:0px">
+    <div class="row align-items-center" style="padding-right:0px">
+      <div class="col-md-6" style="padding-right:0px">
+        <p class="hanzi green head-title">Nos recettes</p>
+        <h1>Découvrez les <br>
+          recettes du moment</h1>
+        <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
+      </div>
+    </div>
+    <div id="tendances" class="row">
+      <div class="row py-4">
+        <div class="col index-card">
+          <h2 class="index-title">Tendances étudiantes du moment</h2>
+          <div class="row pt-5">
+            <% count = 0 %>
+            <% @recipes.order(created_at: :desc).each do |recipe| %>
+              <% if recipe.categories.exists?(title: 'Etudiant') && count < 3 %>
+                <div class="col-lg-4 mb-3">
+                  <%= link_to recipe do %>
+                    <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
+                      <div class="overlay"></div>
+                      <div class="card-body">
+                        <div class="flex-tag d-flex flex-wrap">
+                          <% recipe.categories.each do |category| %>
+                            <div class="tag d-flex align-items-center justify-content-start">
+                              <p class="tag-text my-3 mx-3"><%= category.title %></p>
+                            </div>
+                          <% end %>
+                        </div>
+                        <p class="card-title"><%= recipe.title %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <% count += 1 %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h2>Catégories</h2>
+    <div class="col d-flex align-items-center">
+      <ul class="d-flex justify-content-between categorie-nav" style="list-style:none;">
+        <li class="categorie-link active">Tout</li>
+        <% @categories.each do |category| %>
+          <li class="categorie-link"><%= category.title %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% @recipes.each do |recipe| %>
+      <div class="col-lg-4 mb-3 index-card pt-4">
+        <%= link_to recipe do %>
+          <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
+            <div class="overlay"></div>
+            <div class="card-body">
+              <div class="flex-tag d-flex flex-wrap">
+                <% recipe.categories.each do |category| %>
+                  <div class="tag d-flex align-items-center justify-content-start">
+                    <p class="tag-text my-3 mx-3"><%= category.title %></p>
+                  </div>
+                <% end %>
+              </div>
+              <p class="card-title"><%= recipe.title %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
