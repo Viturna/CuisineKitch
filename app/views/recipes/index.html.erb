@@ -13,8 +13,35 @@
       </div>
     </div>
     <div id="tendances" class="row">
-      <div class="col">
-        <h2 class="index-title">Tendances</h2>
+      <div class="row py-4">
+        <div class="col">
+          <h2 class="index-title">Tendances étudiante du moment</h2>
+          <div class="row pt-5">
+            <% count = 0 %>
+            <% @recipes.order(created_at: :desc).each do |recipe| %>
+              <% if recipe.categories.exists?(title: 'Etudiant') && count < 3 %>
+                <div class="col-lg-4 mb-3">
+                  <%= link_to recipe do %>
+                    <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
+                      <div class="overlay"></div>
+                      <div class="card-body">
+                        <div class="flex-tag d-flex flex-wrap">
+                          <% recipe.categories.each do |category| %>
+                            <div class="tag d-flex align-items-center justify-content-start">
+                              <p class="tag-text my-3 mx-3"><%= category.title %></p>
+                            </div>
+                          <% end %>
+                        </div>
+                        <p class="card-title"><%= recipe.title %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <% count += 1 %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
