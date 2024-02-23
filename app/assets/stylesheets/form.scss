@@ -81,3 +81,20 @@ strong {
 .ingredient-fields {
   display: none;
 }
+
+.form-check-input:checked {
+  background-color: #333231;
+  border-color: #333231;
+}
+
+.form-control:focus {
+  border-color: #333231;
+  box-shadow: 0 0 0 0.05rem #333231;
+}
+
+
+.form-check-input:focus {
+  border-color: #333231;
+  outline: 0;
+  box-shadow: 0 0 0 0.05rem #333231;
+}
