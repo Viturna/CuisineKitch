@@ -15,7 +15,7 @@
       </div>
       <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
         <% if recipe_ingredient.quantity.present? %>
-          <div class="ingredients mt-3">  
+          <div class="ingredients mt-3">
             <div class="ingredient d-flex align-items-center mb-3 py-2">
               <div class="circle">
                 <span class="inner-circle">
@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-6">
-      <p class="date-crea">Recette créée le <%= recipe.created_at.strftime("%d %B %Y") %></p>
+      <p class="date-crea">Recette créée le <%= l(recipe.created_at, format: "%d %B %Y") %></p>
       <h1><%= recipe.title %></h1>
       <div class="flex-tag d-flex py-2">
         <% recipe.categories.each do |category| %>
