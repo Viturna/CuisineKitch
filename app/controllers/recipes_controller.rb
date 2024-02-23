@@ -69,22 +69,26 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :price, :difficulty, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [], ingredient_unitys: [])
+      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :price, :difficulty, :step1, :step2, :step3, :step4, :step5, :step6, :step7, :step8, :step9, :step10, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [], ingredient_unitys: [])
     end
 
 
     # Méthode pour sauvegarder les ingrédients avec les quantités
     def save_recipe_ingredients(recipe)
-      ingredient_ids_with_quantities_and_unities = params[:recipe][:ingredient_ids].map(&:to_i).zip(params[:recipe][:ingredient_quantities].values, params[:recipe][:ingredient_unitys].values)
-
+      ingredient_ids = params.dig(:recipe, :ingredient_ids)
+      ingredient_quantities = params.dig(:recipe, :ingredient_quantities, :values)
+      ingredient_unitys = params.dig(:recipe, :ingredient_unitys, :values)
+    
+      return if ingredient_ids.nil? || ingredient_quantities.nil? || ingredient_unitys.nil?
+    
+      ingredient_ids_with_quantities_and_unities = ingredient_ids.map(&:to_i).zip(ingredient_quantities, ingredient_unitys)
+    
       ingredient_ids_with_quantities_and_unities.each do |ingredient_id, quantity, unity|
         next if quantity.blank? || unity.blank?
-
-        ingredient = Ingredient.find(ingredient_id)
-
-        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, unity: unity, title: ingredient.title, image: ingredient.image)
+        # Reste du code
       end
     end
+    
 
 
 
