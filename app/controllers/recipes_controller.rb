@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
+     @categories = Category.all
     @recipes = Recipe.all
   end
 
