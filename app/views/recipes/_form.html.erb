@@ -30,8 +30,8 @@
               <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox form-check-input", data: { ingredient_id: ingredient.id } %>
               <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
             </div>
-            <div row>
-              <div class="mb-4 input-quantite">
+            <div class="row row-cols-2" id="ingredient_fields_<%= ingredient.id %>" style="display: none;">
+              <div class="col">
                 <% quantity = @quantities[ingredient.id] %>
                 <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
               </div>
@@ -109,4 +109,21 @@
     }
     return true; // Autorise la soumission du formulaire si l'URL est valide
   }
+
+  (function() {
+    const ingredientCheckboxes = document.querySelectorAll('.ingredient-checkbox');
+
+    ingredientCheckboxes.forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        const ingredientId = this.dataset.ingredientId;
+        const ingredientFields = document.getElementById(`ingredient_fields_${ingredientId}`);
+
+        if (this.checked) {
+          ingredientFields.style.display = 'flex';
+        } else {
+          ingredientFields.style.display = 'none';
+        }
+      });
+    });
+  })();
 </script>

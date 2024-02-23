@@ -49,6 +49,7 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
+    delete_associated_entries(@category)
     @category.destroy!
 
     respond_to do |format|
@@ -65,5 +66,9 @@ class CategoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def category_params
       params.require(:category).permit(:title)
+    end
+
+    def delete_associated_entries(category)
+      category.recipe_categories.destroy_all
     end
 end
