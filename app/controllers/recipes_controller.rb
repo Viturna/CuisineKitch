@@ -17,19 +17,19 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  # GET /recipes/1/edit
-  def edit
-    @recipe = Recipe.find(params[:id])
-    @quantities = {}
-    @unities = {}
-  
-    # Pour chaque ingrédient de la recette, récupérez la quantité et l'unité
-    @recipe.recipe_ingredients.each do |recipe_ingredient|
-      @quantities[recipe_ingredient.ingredient_id] = recipe_ingredient.quantity
-      @unities[recipe_ingredient.ingredient_id] = recipe_ingredient.unity
-    end
+# GET /recipes/1/edit
+def edit
+  @recipe = Recipe.find(params[:id])
+  @quantities = {}
+  @unities = {}
+
+  # Pour chaque ingrédient de la recette, récupérez la quantité et l'unité
+  @recipe.recipe_ingredients.each do |recipe_ingredient|
+    @quantities[recipe_ingredient.ingredient_id] = recipe_ingredient.quantity
+    @unities[recipe_ingredient.ingredient_id] = recipe_ingredient.unity
   end
-  
+end
+
 
   # POST /recipes or /recipes.json
   def create
@@ -88,17 +88,17 @@ class RecipesController < ApplicationController
       ingredient_ids = params.dig(:recipe, :ingredient_ids)
       ingredient_quantities = params.dig(:recipe, :ingredient_quantities, :values)
       ingredient_unitys = params.dig(:recipe, :ingredient_unitys, :values)
-    
+
       return if ingredient_ids.nil? || ingredient_quantities.nil? || ingredient_unitys.nil?
-    
+
       ingredient_ids_with_quantities_and_unities = ingredient_ids.map(&:to_i).zip(ingredient_quantities, ingredient_unitys)
-    
+
       ingredient_ids_with_quantities_and_unities.each do |ingredient_id, quantity, unity|
         next if quantity.blank? || unity.blank?
         # Reste du code
       end
     end
-    
+
 
     def delete_associated_entries(recipe)
       recipe.recipe_ingredients.destroy_all

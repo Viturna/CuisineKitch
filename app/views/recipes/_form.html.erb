@@ -25,25 +25,23 @@
       <strong>Choisir les ingrédients :</strong><br>
       <div class="row row-cols-3">
         <% Ingredient.all.each do |ingredient| %>
-  <div class="col">
-    <div>
-      <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox form-check-input", data: { ingredient_id: ingredient.id } %>
-      <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
-    </div>
-    <div row>
-      <div class="mb-4 input-quantite">
-        <% quantity = @quantities[ingredient.id] %>
-        <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
-      </div>
-      <div class="col">
-        <% unity = @unities[ingredient.id] %>
-        <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)"], unity), class: "form-control" %>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-
+          <div class="col">
+            <div>
+              <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}", class: "ingredient-checkbox form-check-input", data: { ingredient_id: ingredient.id } %>
+              <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
+            </div>
+            <div row>
+              <div class="mb-4 input-quantite">
+                <% quantity = @quantities[ingredient.id] %>
+                <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
+              </div>
+              <div class="col">
+                <% unity = @unities[ingredient.id] %>
+                <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)"], unity), class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class ="row row-cols-3 mb-4 px-0">
@@ -74,23 +72,21 @@
         <%= form.select :price, options_for_select(["Bon marché", "Ultra cher"]), { prompt: "Choisir le niveau de budeget" }, class: "form-control" %>
       </div>
     </div>
-
     <!-- Boucle pour afficher les étapes -->
     <% (1..10).each do |step_number| %>
       <% step_content = recipe.send("step#{step_number}") %>
-        <div class="mb-4">
-          <%= form.label "Etape #{step_number}", style: "display: block", class: "mb-2" %>
-          <%= form.text_area "step#{step_number}", value: step_content, class: "form-control", placeholder: "Descriptif de l'étape #{step_number}" %>
-        </div>
+      <div class="mb-4">
+        <%= form.label "Etape #{step_number}", style: "display: block", class: "mb-2" %>
+        <%= form.text_area "step#{step_number}", value: step_content, class: "form-control", placeholder: "Descriptif de l'étape #{step_number}" %>
+      </div>
     <% end %>
-
     <div class="mb-4">
       <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
       <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image"  %>
     </div>
     <div class="d-flex align-items-center justify-content-end gap-5">
       <div>
-        <%= link_to "Annuler", recipes_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+        <%= link_to "Annuler", @recipe, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
       </div>
       <div class="ml-4">
         <%= form.submit "Valider", class: "btn btn-dark btn-lg" %>
