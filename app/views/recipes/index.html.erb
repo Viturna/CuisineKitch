@@ -78,7 +78,7 @@
 </div>
 </div>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  (function() {
     const categorieLinks = document.querySelectorAll(".categorie-link");
     const indexCards = document.querySelectorAll(".index-card");
 
@@ -112,5 +112,6 @@
         filterRecipes(category);
       });
     });
-  });
+  })();
 </script>
+
