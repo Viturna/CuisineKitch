@@ -27,9 +27,10 @@
                   <p class="ingredient-title"><%= recipe_ingredient.title %></p>
                 </div>
                 <div class="ml-auto">
-                  <!-- Quantité d'ingrédient ajustée selon le nombre de personnes -->
-                  <p class="ingredient-number" data-original-quantity="<%= recipe_ingredient.quantity %>"><%= recipe_ingredient.quantity * 1 %></p>
-                  <p><%= recipe_ingredient.unity %></p>
+                  <div style="display: flex; align-items: center;">
+                    <p class="ingredient-number" data-original-quantity="<%= recipe_ingredient.quantity %>"><%= recipe_ingredient.quantity * 1 %></p>
+                    <p class="ingredient-unity" style="margin-left: 5px;"><%= recipe_ingredient.unity %></p>
+                  </div>
                 </div>
               </div>
             </div>
