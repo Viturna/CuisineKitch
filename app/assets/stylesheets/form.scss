@@ -75,3 +75,50 @@ strong {
   outline: 0;
   box-shadow: 0 0 0 0.05rem #333231;
 }
+
+.etape-count-container {
+  border: 1px solid #333231;
+  display: inline-block;
+  border-radius: 250px;
+}
+
+.span-etape{
+  font-size: 14px;
+  font-weight: 300;
+  color: #727272;
+  margin-right: 20px;
+}
+
+#etapeInput {
+  color: #333231;
+  background: #FBF5EF;
+  width: 20px;
+  height: 50px;
+  margin-left: 20px;
+  padding-right: 0;
+  border: none;
+}
+
+.button-plus {
+  color: #333231;
+  background: #FFF;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  padding: 15px 20px;
+  height: 50px;
+  width: 35px;
+  border: none;
+  border-left: 1px solid #333231;
+}
+
+.button-moins {
+  color: #333231;
+  background: #FFF;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  padding: 15px 20px;
+  height: 50px;
+  width: 35px;
+  border: none;
+  border-right: 1px solid #333231;
+}
