@@ -121,13 +121,15 @@
     const plusBtn = document.getElementById('plusBtn');
     const minusBtn = document.getElementById('minusBtn');
     const personInput = document.getElementById('personInput');
+    const initialNumberOfPeople = parseInt(personInput.value); // Nombre initial de personnes
 
     function updateIngredientQuantities() {
       const ingredientsQuantities = document.querySelectorAll('.ingredient-number');
-      const numberOfPeople = parseInt(personInput.value);
+      const newNumberOfPeople = parseInt(personInput.value);
+
       ingredientsQuantities.forEach(function(ingredientQuantityElement) {
         const originalQuantity = parseFloat(ingredientQuantityElement.dataset.originalQuantity);
-        const newQuantity = originalQuantity * numberOfPeople;
+        const newQuantity = (originalQuantity * newNumberOfPeople) / initialNumberOfPeople; // Produit en croix
         ingredientQuantityElement.textContent = newQuantity % 1 === 0 ? newQuantity.toFixed(0) : newQuantity.toFixed(2).replace(/\.?0+$/, '');
       });
     }
@@ -157,7 +159,7 @@
       updateIngredientQuantities();
     });
 
-
     updateIngredientQuantities();
   })();
+
 </script>
