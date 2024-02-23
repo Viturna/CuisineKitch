@@ -37,7 +37,7 @@
               </div>
               <div class="col">
                 <% unity = @unities[ingredient.id] %>
-                <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)"], unity), class: "form-control" %>
+                <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], unity), class: "form-control" %>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@
       <%= form.label "Description", style: "display: block", class: "mb-2" %>
       <%= form.text_area :description, class: "form-control", placeholder: "Description de votre recette" %>
     </div>
-    <div class="row row-cols-2 mb-4 px-0">
+    <div class="row row-cols-3 mb-4 px-0">
       <div class="col">
         <%= form.label "Niveau de difficulté", style: "display: block", class: "form-label" %>
         <%= form.select :difficulty, options_for_select(["Très facile", "Facile", "Intermédiaire", "Difficile"]), { prompt: "Choisir le niveau de difficulté" }, class: "form-control" %>
@@ -70,6 +70,10 @@
       <div class="col">
         <%= form.label "Budget", style: "display: block", class: "form-label" %>
         <%= form.select :price, options_for_select(["Bon marché", "Ultra cher"]), { prompt: "Choisir le niveau de budeget" }, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.label :nbperson, "Nombre de personnes", style: "display: block", class: "form-label" %>
+        <%= form.number_field :nbperson, class: "form-control" %>
       </div>
     </div>
     <!-- Boucle pour afficher les étapes -->

@@ -7,7 +7,7 @@
         <div id="personCount" class="person-count-container d-inline-block ml-4">
           <div class="person-count-controls">
             <button id="minusBtn">-</button>
-            <input type="text" id="personInput" value="1" min="1" max="25" readonly>
+            <input type="text" id="personInput" value="<%= recipe.nbperson %>" min="1" max="25" readonly>
             <span>personnes</span>
             <button id="plusBtn">+</button>
           </div>
@@ -76,7 +76,7 @@
           <svg width="55" height="52" viewBox="0 0 55 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M54.9576 20.8223C55.2324 19.4598 54.1332 17.8247 52.7593 17.8247L37.0964 15.6446L29.9519 1.47415C29.6771 0.929132 29.4023 0.656622 28.8527 0.384113C27.4788 -0.433415 25.8301 0.111604 25.0057 1.47415L18.136 15.6446L2.47309 17.8247C1.64873 17.8247 1.09915 18.0972 0.824364 18.6422C-0.274788 19.7323 -0.274788 21.3673 0.824364 22.4574L12.0907 33.3578L9.34279 48.8908C9.34279 49.4358 9.34279 49.9808 9.61758 50.5259C10.4419 51.8884 12.0907 52.4334 13.4646 51.6159L27.4788 44.2581L41.493 51.6159C41.7678 51.8884 42.3174 51.8884 42.8669 51.8884C43.1417 51.8884 43.1417 51.8884 43.4165 51.8884C44.7904 51.6159 45.8896 50.2533 45.6148 48.6183L42.8669 33.0852L54.1332 22.1849C54.6828 21.9124 54.9576 21.3673 54.9576 20.8223ZM37.9208 30.3602C37.3712 30.9052 37.0964 31.9952 37.0964 32.8127L39.0199 44.2581L28.578 38.8079C28.3032 38.5354 27.7536 38.5354 27.204 38.5354V8.83191L32.425 19.1873C32.6998 20.0048 33.5241 20.5498 34.6233 20.5498L46.1644 22.1849L37.9208 30.3602Z" fill="#F0B036"/>
           </svg>
-          <p class="py-3" style="margin-bottom:0px;">2,5/5</p>
+          <p class="py-3" style="margin-bottom:0px;"><%= recipe.nbperson %></p>
         </div>
         <div class="info-box d-flex align-items-center mx-5" style="flex-direction: column;">
           <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
