@@ -54,6 +54,10 @@
       </div>
       <div class="row py-2">
         <div class="col-md-3">
+          <p>Temps total</p>
+          <p><strong><%= total_time(recipe) %>min</strong></p>
+        </div>
+        <div class="col-md-3">
           <p>Préparation</p>
           <p><strong><%= preparation_time = recipe.preparationtime ? recipe.preparationtime.min : 0 %>min</strong></p>
         </div>
@@ -64,10 +68,6 @@
         <div class="col-md-3">
           <p>Repos</p>
           <p><strong><%= resting_time = recipe.restingtime ? recipe.restingtime.min : 0 %>min</strong></p>
-        </div>
-        <div class="col-md-3">
-          <p>Temps total</p>
-          <p><strong><%= total_time(recipe) %>min</strong></p>
         </div>
       </div>
       <h2>A savoir avant de commencer</h2>
@@ -161,5 +161,4 @@
 
     updateIngredientQuantities();
   })();
-
 </script>
