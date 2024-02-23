@@ -59,7 +59,7 @@ strong {
 
 
 .form-ingredient img {
-  width: 100px;
+  width: 100px !important;
   height: 100px;
   object-fit: cover !important;
 }
@@ -73,9 +73,11 @@ strong {
 }
 
 .form-ingredient.selected {
-  background-color: lightblue; /* Style à appliquer lorsque l'ingrédient est sélectionné */
+  background-color: #333231;
 }
-
+.form-ingredient.selected p{
+  color: #FFF;
+}
 .ingredient-fields {
   display: none;
 }

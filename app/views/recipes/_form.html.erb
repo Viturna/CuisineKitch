@@ -28,7 +28,7 @@
           <div class="col py-4">
             <div class="form-ingredient d-flex align-items-center justify-content-center" data-ingredient-id="<%= ingredient.id %>">
               <img src="<%= ingredient.image %>">
-            <p> <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %></p><br>
+            <p> <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title, class: "pt-3" %></p><br>
             </div>
             <div class="row row-cols-2 py-4 ingredient-fields" id="ingredient_fields_<%= ingredient.id %>">
               <div class="col">
