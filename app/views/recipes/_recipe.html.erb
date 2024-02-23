@@ -93,6 +93,21 @@
       </div>
       <h2>Recette</h2>
       <div class="flex">
+        <% (1..10).each do |step_number| %>
+          <% step_content = recipe.send("step#{step_number}") %>
+          <% if step_content.present? %>
+            <div class="step d-flex align-items-center mb-3 py-2">
+              <div class="circle">
+                <span class="inner-circle"><%= step_number %></span>
+              </div>
+              <p><%= step_content %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <h2>Recette</h2>
+      <div class="flex">
         <div class="step d-flex align-items-center mb-3 py-2">
           <div class="circle">
             <span class="inner-circle">1</span>
