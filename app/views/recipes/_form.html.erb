@@ -24,24 +24,47 @@
     <div class="mb-4">
       <strong>Choisir les ingrédients :</strong><br>
       <div class="row row-cols-3">
-        <% Ingredient.all.each do |ingredient| %>
-          <div class="col">
-            <div class="form-ingredient" data-ingredient-id="<%= ingredient.id %>">
-              <img src="<%= ingredient.image %>">
-              <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
-            </div>
-            <div class="row row-cols-2 ingredient-fields" id="ingredient_fields_<%= ingredient.id %>" style="display: none;">
-              <div class="col">
-                <% quantity = @quantities[ingredient.id] %>
-                <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
-              </div>
-              <div class="col">
-                <% unity = @unities[ingredient.id] %>
-                <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], unity), class: "form-control" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+ <% Ingredient.all.each do |ingredient| %>
+  <div class="col">
+    <div class="form-ingredient" data-ingredient-id="<%= ingredient.id %>">
+      <img src="<%= ingredient.image %>">
+      <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title %><br>
+    </div>
+    <div class="row row-cols-2 ingredient-fields" id="ingredient_fields_<%= ingredient.id %>">
+      <div class="col">
+        <% quantity = @quantities[ingredient.id] %>
+        <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
+      </div>
+      <div class="col">
+        <% unity = @unities[ingredient.id] %>
+        <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], unity), class: "form-control" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const formIngredients = document.querySelectorAll('.form-ingredient');
+
+    formIngredients.forEach(function(ingredient) {
+      ingredient.addEventListener('click', function() {
+        this.classList.toggle('selected');
+
+        const ingredientId = this.dataset.ingredientId;
+        const ingredientFields = document.getElementById(`ingredient_fields_${ingredientId}`);
+
+        if (this.classList.contains('selected')) {
+          ingredientFields.style.display = 'flex';
+        } else {
+          ingredientFields.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+
       </div>
     </div>
     <div class ="row row-cols-3 mb-4 px-0">
@@ -110,43 +133,4 @@
     return true; // Autorise la soumission du formulaire si l'URL est valide
   }
 </script>
-<script>
-  (function() {
-  const formIngredients = document.querySelectorAll('.form-ingredient');
 
-  formIngredients.forEach(function(ingredient) {
-    ingredient.addEventListener('click', function() {
-      this.classList.toggle('selected');
-      const checkbox = document.getElementById(`recipe_ingredient_ids_${this.dataset.ingredientId}`);
-      checkbox.checked = !checkbox.checked;
-
-      const ingredientId = this.dataset.ingredientId;
-      const ingredientFields = document.getElementById(`ingredient_fields_${ingredientId}`);
-
-      if (this.classList.contains('checked')) {
-        ingredientFields.style.display = 'flex';
-      } else {
-        ingredientFields.style.display = 'none';
-      }
-    });
-  });
-  })();
-
-
-  // (function() {
-  //   const ingredientCheckboxes = document.querySelectorAll('.ingredient-checkbox');
-
-  //   ingredientCheckboxes.forEach(function(checkbox) {
-  //     checkbox.addEventListener('change', function() {
-  //       const ingredientId = this.dataset.ingredientId;
-  //       const ingredientFields = document.getElementById(`ingredient_fields_${ingredientId}`);
-
-  //       if (this.checked) {
-  //         ingredientFields.style.display = 'flex';
-  //       } else {
-  //         ingredientFields.style.display = 'none';
-  //       }
-  //     });
-  //   });
-  // })();
-</script>
