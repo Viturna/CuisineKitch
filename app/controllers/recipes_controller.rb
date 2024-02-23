@@ -15,7 +15,10 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @quantities = {}
+    @unities = {}
   end
+  
 
 # GET /recipes/1/edit
 def edit
