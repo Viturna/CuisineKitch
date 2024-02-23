@@ -68,41 +68,23 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :price, :difficulty, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [], ingredient_units: [])
+      params.require(:recipe).permit(:title, :preparationtime, :cookingtime, :restingtime, :description, :price, :difficulty, :step1, :step2, :step3, :image, category_ids: [], ingredient_ids: [], ingredient_quantities: [], ingredient_unitys: [])
     end
 
 
     # Méthode pour sauvegarder les ingrédients avec les quantités
     def save_recipe_ingredients(recipe)
-      # Assurez-vous que les clés existent et ne sont pas nil
-      return unless params[:recipe][:ingredient_ids] && params[:recipe][:ingredient_quantities]
+      ingredient_ids_with_quantities_and_unities = params[:recipe][:ingredient_ids].map(&:to_i).zip(params[:recipe][:ingredient_quantities].values, params[:recipe][:ingredient_unitys].values)
 
-      # Vous combinez les identifiants des ingrédients avec les quantités fournies
-      ingredient_ids_with_quantities = params[:recipe][:ingredient_ids].map(&:to_i).zip(
-        params[:recipe][:ingredient_quantities].values
-      )
-
-      # Vous parcourez chaque paire d'identifiant d'ingrédient et quantité
-      ingredient_ids_with_quantities.each do |ingredient_id, quantity|
-        # Récupérez l'unité de chaque ingrédient
-        unit = params[:recipe][:ingredient_units][ingredient_id.to_s]
-
-        # Si la quantité est vide ou l'unité est vide, passez à l'itération suivante
-        next if quantity.blank? || unit.blank?
+      ingredient_ids_with_quantities_and_unities.each do |ingredient_id, quantity, unity|
+        next if quantity.blank? || unity.blank?
 
         ingredient = Ingredient.find(ingredient_id)
 
-        # Vous créez une nouvelle entrée dans la table d'association recipe_ingredients
-        # Cela associe l'ingrédient à la recette avec sa quantité et d'autres informations pertinentes
-        recipe.recipe_ingredients.create(
-          ingredient_id: ingredient_id,
-          quantity: quantity,
-          unit: unit,
-          title: ingredient.title,
-          image: ingredient.image
-        )
+        recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: quantity, unity: unity, title: ingredient.title, image: ingredient.image)
       end
     end
+
 
 
 
