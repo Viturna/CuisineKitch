@@ -2,7 +2,19 @@
 a {
   text-decoration: none;
 }
-
+//Footer
+footer{
+  background-color: #333231;
+  height: 100px;
+}
+footer p{
+  margin: 0;
+  color: #fff;
+}
+footer a{
+  color: #fff;
+  font-weight: 700;
+}
 .home-index {
   width: 254px !important;
   height: 230px !important;

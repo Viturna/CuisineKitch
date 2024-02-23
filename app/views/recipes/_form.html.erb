@@ -42,7 +42,7 @@
               </div>
               <div class="col">
                 <% unity = @unities[ingredient.id] %>
-                <%= select_tag "recipe[ingredient_unitys][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], unity), class: "form-control" %>
+                <%= select_tag "recipe[ingredient_unities][#{ingredient.id}]", options_for_select(["g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], unity), class: "form-control" %>
               </div>
             </div>
           </div>
@@ -122,6 +122,7 @@
     formIngredients.forEach(function(ingredient) {
       ingredient.addEventListener('click', function() {
         this.classList.toggle('selected');
+        this.classList.toggle('checked');
 
         const ingredientId = this.dataset.ingredientId;
         const ingredientFields = document.getElementById(`ingredient_fields_${ingredientId}`);
