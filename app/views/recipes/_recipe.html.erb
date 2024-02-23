@@ -117,7 +117,7 @@
   </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  (function() {
     const plusBtn = document.getElementById('plusBtn');
     const minusBtn = document.getElementById('minusBtn');
     const personInput = document.getElementById('personInput');
@@ -159,5 +159,5 @@
 
 
     updateIngredientQuantities();
-  });
+  })();
 </script>
