@@ -23,6 +23,9 @@
               <%= link_to "Accueil", recipes_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
+              <%= link_to "À propos", recipes_apropos_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "Nouvelle recette", new_recipe_path, class: "nav-link" %>
             </li>
             <li>
@@ -30,9 +33,6 @@
             </li>
             <li>
               <%= link_to "Ingrédients", ingredients_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">A propos</a>
             </li>
           </ul>
         </div>

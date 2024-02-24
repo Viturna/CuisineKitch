@@ -1,75 +1,50 @@
 <div class="container grid">
-  <div class="pt-5" style="padding-right:0px">
-    <div class="row align-items-center" style="padding-right:0px">
-      <div class="col-md-6" style="padding-right:0px">
-        <p class="hanzi green head-title">Nos recettes</p>
-        <h1>Découvrez les <br>
-          recettes du moment</h1>
-        <p>Cuisine Kitch le site n°1 sur les recettes collaboratives</p>
-      </div>
+  <div class="row pt-5" style="padding-right:0px">
+    <div class="col-md-5" style="padding-right:0px">
+      <p class="hanzi green head-title">Découverte</p>
+      <h1>À propos  <br>
+        de nous</h1>
     </div>
-    <div id="tendances" class="row">
-      <div class="row py-4">
-        <div class="col index-card">
-          <h2 class="index-title">Tendances étudiantes du moment</h2>
-          <div class="row pt-5">
-            <% count = 0 %>
-            <% @recipes.order(created_at: :desc).each do |recipe| %>
-              <% if recipe.categories.exists?(title: 'Etudiant') && count < 3 %>
-                <div class="col-lg-4 mb-3">
-                  <%= link_to recipe do %>
-                    <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
-                      <div class="overlay"></div>
-                      <div class="card-body">
-                        <div class="flex-tag d-flex flex-wrap">
-                          <% recipe.categories.each do |category| %>
-                            <div class="tag d-flex align-items-center justify-content-start">
-                              <p class="tag-text my-3 mx-3"><%= category.title %></p>
-                            </div>
-                          <% end %>
-                        </div>
-                        <p class="card-title"><%= recipe.title %></p>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-                <% count += 1 %>
-              <% end %>
-            <% end %>
-          </div>
+    <div class="col-md-7 box-text-apropos">
+      <p class="bold dark big-text">Bienvenue dans l'univers déjanté de <span class="green">Cuisine Kitch ! </span><br>
+        Ici, nous célébrons l'art culinaire dans toute sa splendeur loufoque. Notre mission ? Révolutionner la cuisine en vous offrant un espace où l'extravagance et la créativité règnent en maîtres.
+      </p>
+      <div class="row pt-5">
+        <div class="col-md-2">
+          <p class="bold dark">Notre site</p>
+        </div>
+        <div class="col">
+          <p>Ajoutez des ingrédients farfelus et inattendus pour pimenter vos recettes habituelles.</p>
+          <p>Explorez une multitude de catégories, des desserts décadents aux plats principaux étrangement délicieux.</p>
+          <p>Laissez libre cours à votre imagination et créez des recettes uniques qui surprendront et raviront vos papilles.<br>
+            Partagez vos créations culinaires les plus audacieuses avec une communauté de passionnés tout aussi excentriques.</p>
+          <p>Découvrez de nouvelles inspirations culinaires à travers les recettes farfelues de nos membres.</p>
+        </div>
+      </div>
+      <p class="pt-5">Nous sommes convaincus que la cuisine ne devrait jamais être ennuyeuse. C'est pourquoi nous avons créé <span class="green">CuisineKitch</span>, un lieu où vous pouvez laisser libre cours à votre imagination culinaire et partager vos recettes les plus farfelues avec le monde entier.<br>
+        Que vous soyez un chef expérimenté en quête de nouveaux défis ou un amateur passionné désireux d'explorer de nouveaux horizons gustatifs, vous trouverez ici une communauté accueillante et inspirante.<br>
+        Nos recettes sont tout sauf ordinaires. Des cupcakes au bacon aux sushis à la pizza, en passant par les hamburgers à la crème glacée, nous repoussons sans cesse les limites de la cuisine traditionnelle pour vous offrir des plats aussi délicieux que surprenants.<br>
+        Alors, préparez-vous à être étonné, à rire et à vous régaler avec CuisineKitch. Rejoignez-nous dès aujourd'hui et laissez-vous emporter dans un voyage culinaire unique en son genre !</p>
+    </div>
+  </div>
+  <div id="apropos" class="row py-5">
+    <div class="row pt-4">
+      <%= image_tag "decoration-rond", alt:"", class: "pos-absolute"%>
+      <div class="col-md-6">
+        <div class="card-apropos d-flex align-items-center">
+          <%= image_tag "line-photo", alt:"", class: "photo-apropos"%>
+          <p class="name pt-3 bold">Cabaret Line</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-apropos d-flex align-items-center">
+          <%= image_tag "thomas-photo", alt:"", class: "photo-apropos"%>
+          <p class="name pt-3 bold">Riquier Thomas</p>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <h2>Catégories</h2>
-    <div class="col d-flex align-items-center">
-      <ul class="d-flex justify-content-between categorie-nav" style="list-style:none;">
-        <li class="categorie-link active">Tout</li>
-        <% @categories.each do |category| %>
-          <li class="categorie-link"><%= category.title %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% @recipes.each do |recipe| %>
-      <div class="col-lg-4 mb-3 index-card pt-4">
-        <%= link_to recipe do %>
-          <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
-            <div class="overlay"></div>
-            <div class="card-body">
-              <div class="flex-tag d-flex flex-wrap">
-                <% recipe.categories.each do |category| %>
-                  <div class="tag d-flex align-items-center justify-content-start">
-                    <p class="tag-text my-3 mx-3"><%= category.title %></p>
-                  </div>
-                <% end %>
-              </div>
-              <p class="card-title"><%= recipe.title %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <p>Ce site de recettes kitch est le fruit d'un projet étudiant réalisé dans le cadre de la formation MMI à Bordeaux. Conçu par Thomas Riquier et Line Cabaret et encadré par Arnaud Levy, ce projet nous a permit de découvrir Ruby on Rails. Nous espérons que vous apprécierez cette expérience culinaire hors du commun !</p>
   </div>
-</div>
 </div>
