@@ -3,21 +3,25 @@
     <div class="col">
       <p style="color: green;"><%= notice %></p>
       <p class="hanzi green head-title">Cuisine Kitch</p>
-      <h1>Les différent ingrédients</h1>
+      <h1>Les différents ingrédients</h1>
       <p>Ajouter / Supprimer vos ingrédients</p>
     </div>
     <div class="col d-flex align-items-start justify-content-end" style="margin-top:50px;">
       <%= link_to "Ajouter un ingrédient", new_ingredient_path, class:"btn btn-style d-flex align-items-center justify-content-center"  %>
     </div>
   </div>
-  <div id="categories" class="row row-cols-4">
-    <% @ingredients.each do |ingredient| %>
-      <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
-        <p class="card-title my-2"><%= ingredient.title %></p>
-        <div class="my-3">
-          <%= image_tag ingredient.image, class: "object-fit-cover width-contain-img" %>
-        </div>
+    <% ingredients_by_type = @ingredients.group_by(&:ingredient_type) %>
+    <% ingredients_by_type.keys.sort.each do |type| %>
+      <h2><%= type.capitalize %>:</h2>
+      <div id="categories" class="row row-cols-4">
+          <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
+            <% ingredients_by_type[type].each do |ingredient| %>
+              <p class="card-title my-2"><%= ingredient.title %></p>
+              <div class="my-3">
+                <%= image_tag ingredient.image, class: "object-fit-cover width-contain-img" %>
+              </div>
+            <% end %>
+          </div>
       </div>
     <% end %>
-  </div>
 </div>

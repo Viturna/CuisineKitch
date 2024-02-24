@@ -66,7 +66,7 @@ class IngredientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ingredient_params
-      params.require(:ingredient).permit(:title, :image)
+      params.require(:ingredient).permit(:title, :image, :ingredient_type)
     end
 
     def delete_associated_entries(ingredient)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_23_113759) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_24_170527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_23_113759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "ingredient_type"
   end
 
   create_table "recipe_categories", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_23_113759) do
     t.string "title"
     t.text "image"
     t.string "unity"
+    t.string "ingredient_type"
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
@@ -67,9 +69,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_23_113759) do
     t.text "step5"
     t.text "step6"
     t.text "step7"
+    t.text "step8"
     t.text "step10"
     t.text "step9"
-    t.text "step8"
     t.integer "nbperson"
   end
 
