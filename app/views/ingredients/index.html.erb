@@ -38,7 +38,7 @@
   <% end %>
 </div>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  (function() {
     const toggleButtons = document.querySelectorAll(".toggle-ingredients");
 
     toggleButtons.forEach(button => {
@@ -57,5 +57,5 @@
         }
       });
     });
-  });
+  })();
 </script>
