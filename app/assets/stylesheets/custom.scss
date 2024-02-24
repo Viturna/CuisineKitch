@@ -346,18 +346,35 @@ img {
 .name{
   color: #FFF;
 }
+.box-text-apropos{
+  max-width: 800px;
+}
 #apropos {
-  padding: 0 5vw;
+  padding: 0 8vw;
   width: 100vw;
   margin: 50px -5vw;
   background-color: #333231;
   position: relative;
 }
-.pos-absolute {
+.decoration-rond-left{
+  padding: 0;
   position: absolute;
-  left: 0;
+  width: 160px !important;
+  height: 380px !important;
+  object-fit: cover !important;
+  left: -30px;
   top: 50%;
   transform: translateY(-50%);
+}
+.decoration-rond-right {
+  padding: 0;
+  position: absolute;
+  width: 160px !important;
+  height: 380px !important;
+  object-fit: cover !important;
+  right: -30px; /* Ajustez la valeur de la position droite selon vos besoins */
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
 }
 
 #apropos h2 {
