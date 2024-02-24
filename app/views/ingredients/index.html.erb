@@ -12,20 +12,8 @@
   </div>
   <% ingredients_by_type = @ingredients.group_by(&:ingredient_type) %>
   <% ingredients_by_type.keys.sort.each do |type| %>
-    <div class="row align-items-center">
-      <div class="col">
-        <h2 class="py-3"><%= type.capitalize %></h2>
-      </div>
-      <div class="col-auto">
-        <a href="#" class="toggle-ingredients btn-style-border" data-type="<%= type %>">
-          Sélectionner vos/votre <%= type.downcase %>
-          <svg xmlns="http://www.w3.org/2000/svg" class="chevron-icon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.793l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div id="ingredients-<%= type %>" class="row row-cols-3" style="display: none;"> <!-- Modification ici -->
+    <h2><%= type.capitalize %></h2>
+    <div id="categories" class="row row-cols-4">
       <% ingredients_by_type[type].each do |ingredient| %>
         <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
           <p class="card-title my-2"><%= ingredient.title %></p>
@@ -37,25 +25,3 @@
     </div>
   <% end %>
 </div>
-<script>
-  (function() {
-    const toggleButtons = document.querySelectorAll(".toggle-ingredients");
-
-    toggleButtons.forEach(button => {
-      button.addEventListener("click", function(event) {
-        event.preventDefault();
-        const type = this.getAttribute("data-type");
-        const ingredientsDiv = document.getElementById(`ingredients-${type}`);
-        const chevronIcon = this.querySelector(".chevron-icon");
-
-        if (ingredientsDiv.style.display === "none") {
-          ingredientsDiv.style.display = "flex";
-          chevronIcon.style.transform = "rotate(180deg)";
-        } else {
-          ingredientsDiv.style.display = "none";
-          chevronIcon.style.transform = "rotate(0deg)";
-        }
-      });
-    });
-  })();
-</script>
