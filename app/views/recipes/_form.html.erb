@@ -49,16 +49,16 @@
         <% end %>
       </div>
     </div>
-    <div class ="row row-cols-3 mb-4 px-0">
-      <div class="col">
+    <div class="row mb-4 px-0">
+      <div class="col-md-4 mb-3">
         <%= form.label "Temps de préparation", style: "display: block"%>
         <%= form.time_field :preparationtime, class: "form-control form-time" %>
       </div>
-      <div class="col">
+      <div class="col-md-4 mb-3">
         <%= form.label "Temps de cuisson", style: "display: block"%>
         <%= form.time_field :cookingtime, class: "form-control form-time"  %>
       </div>
-      <div class="col">
+      <div class="col-md-4 mb-3">
         <%= form.label "Temps de repos", style: "display: block"%>
         <%= form.time_field :restingtime, class: "form-control form-time"  %>
       </div>
