@@ -15,7 +15,18 @@ a {
 body {
   overflow-x: hidden;
   font-family: Inter;
+  margin-top: 100px
 }
+header {
+  background-color: #FBF5EF;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 50%; /* Place le bord gauche de l'en-tête à 50% de la largeur de l'écran */
+  transform: translateX(-50%); /* Déplace l'en-tête de moitié de sa propre largeur vers la gauche pour le centrer */
+  width: 100%; /* Assure que l'en-tête occupe toute la largeur de la fenêtre */
+}
+
 .nav-item a {
   color: #333231;
 }
@@ -29,6 +40,23 @@ body {
   font-size: 18px;
 }
 
+.navbar-collapse {
+  background-color: rgba(251, 245, 239, 1); /* Arrière-plan semi-transparent */
+}
+@media (max-width: 990px) {
+  .navbar-nav {
+    font-size: 14px; /* Réduire la taille de la police pour les appareils mobiles */
+  }
+  .navbar-collapse {
+    margin-top: 33px;
+    z-index: 999;
+   height: 230px;
+   border-bottom: 1px solid #333231;
+  }
+  .home-index{
+    display: none;
+  }
+}
 
 
 .nav-link:hover {
