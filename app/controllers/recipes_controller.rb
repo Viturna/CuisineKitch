@@ -6,10 +6,17 @@ class RecipesController < ApplicationController
      @categories = Category.all
     @recipes = Recipe.all
   end
-
+  def apropos
+    @recipes = Recipe.all
+  end
   # GET /recipes/1 or /recipes/1.json
   def show
-    @recipe = Recipe.find(params[:id])
+    if params[:id] == "apropos"
+      render 'apropos'
+    else
+      @recipe = Recipe.find(params[:id])
+      @ingredients = @recipe.ingredients
+    end
   end
 
   # GET /recipes/new
@@ -84,9 +91,10 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
-      @recipe = Recipe.find(params[:id])
+      if params[:id] != "apropos"
+        @recipe = Recipe.find(params[:id])
+      end
     end
-
     def recipe_params
       params.require(:recipe).permit(
         :title, :preparationtime, :cookingtime, :restingtime, :description,

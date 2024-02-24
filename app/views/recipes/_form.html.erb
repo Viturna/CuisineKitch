@@ -42,7 +42,7 @@
               </div>
               <div class="col">
                 <% unity = @unities[ingredient.id] %>
-                <%= select_tag "recipe[ingredient_unities][#{ingredient.id}]", options_for_select(["", "g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], nil), class: "form-control" %>
+                <%= select_tag "recipe[ingredient_unities][#{ingredient.id}]", options_for_select(["", "g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], nil), include_blank: "Unité", class: "form-control" %>
               </div>
             </div>
           </div>
