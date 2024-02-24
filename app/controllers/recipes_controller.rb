@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
       render 'apropos'
     else
       @recipe = Recipe.find(params[:id])
+      @ingredients = @recipe.ingredients
     end
   end
 
@@ -39,10 +40,10 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-
+  
     respond_to do |format|
       if @recipe.save
-        save_recipe_ingredients(@recipe)
+        save_recipe_ingredients(@recipe)  # Appel de la méthode pour sauvegarder les ingrédients
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -51,7 +52,7 @@ class RecipesController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
     respond_to do |format|
@@ -94,18 +95,18 @@ class RecipesController < ApplicationController
     def save_recipe_ingredients(recipe)
       ingredient_ids = params.dig(:recipe, :ingredient_ids)
       ingredient_quantities = params.dig(:recipe, :ingredient_quantities)
-      ingredient_unitys = params.dig(:recipe, :ingredient_unitys)
-
-      return if ingredient_ids.nil? || ingredient_quantities.nil? || ingredient_unitys.nil?
-
+      ingredient_unities = params.dig(:recipe, :ingredient_unities)  # Correction du nom du paramètre
+    
+      return if ingredient_ids.nil? || ingredient_quantities.nil? || ingredient_unities.nil?
+    
       ingredient_ids.each do |ingredient_id|
         quantity = ingredient_quantities[ingredient_id.to_sym]
-        unity = ingredient_unitys[ingredient_id.to_sym]
-
+        unity = ingredient_unities[ingredient_id.to_sym]  # Correction du nom de la variable
+    
         next if quantity.blank? || unity.blank?
-
+    
         ingredient = Ingredient.find(ingredient_id)
-
+    
         recipe.recipe_ingredients.create(
           ingredient_id: ingredient_id,
           quantity: quantity,
@@ -115,7 +116,7 @@ class RecipesController < ApplicationController
         )
       end
     end
-
+    
     # Méthode pour supprimer les entrées associées à une recette
     def delete_associated_entries(recipe)
       recipe.recipe_ingredients.destroy_all
