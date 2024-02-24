@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cuisinekitch</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Balises pour une indexation optimisée -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <!-- META -->
+    <title><%= @page_title || "Page Cuisine Kitch" %></title>
+    <meta name="description" content="<%= @meta_description || "Description par défaut" %>">
+    <%= favicon_link_tag 'favicon.svg' %>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="copyright" content="© Copyright CuisineKitch - Tous droits réservés.">
+    <!-- CSS -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', 'custom', media: 'all' %>
     <%= javascript_importmap_tags %>
-    <%= favicon_link_tag 'favicon.svg' %>
+    <link rel="preload" as="font">
+    <!-- Balises pour les réseaux sociaux -->
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= @page_title || "Page Cuisine Kitch" %>">
+    <meta property="og:site_name" content="Cuisine Kitch">
+    <meta property="og:url" content="https://lartduvan.fr/contact">
+    <meta property="og:description" content="<%= @meta_description || "Description par défaut" %>">
+    <meta property="og:image" content="https://i.ibb.co/Y7LHm7s/logo-fond-blanc.webp">
+    <!-- Balises pour Twitter -->
+    <meta name="twitter:title" content="<%= @page_title || "Page Cuisine Kitch" %>">
+    <meta name="twitter:description" content="<%= @meta_description || "Description par défaut" %>">
+    <meta name="twitter:url" content="https://lartduvan.fr/contact">
+    <meta name="twitter:image" content=" <%= image_tag "favicon.svg"%>">
   </head>
   <body>
     <header class="d-flex align-items-center justify-content-center">

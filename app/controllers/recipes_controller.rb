@@ -3,11 +3,16 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-     @categories = Category.all
+    @categories = Category.all
     @recipes = Recipe.all
-  end
+    @page_title = "Cuisine Kitch - Recettes déjantées pour une cuisine créative"
+    @meta_description = "Explorez l'univers déjanté de Cuisine Kitch, où la créativité culinaire est à l'honneur. Découvrez des recettes uniques, partagez vos créations et plongez dans un voyage gustatif sans pareil. Rejoignez-nous dès aujourd'hui pour une expérience culinaire inoubliable !"
+ end
+
   def apropos
     @recipes = Recipe.all
+    @page_title = "À propos de Cuisine Kitch - Découvrez notre univers déjanté"
+    @meta_description = "Découvrez l'univers déjanté de Cuisine Kitch. Explorez notre mission, notre communauté et nos recettes farfelues. Rejoignez-nous pour une expérience culinaire unique !"
   end
   # GET /recipes/1 or /recipes/1.json
   def show
@@ -24,6 +29,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @quantities = {}
     @unities = {}
+    @page_title = "Ajouter une recette - Cuisine Kitch"
+    @meta_description = "Ajoutez vos recettes uniques, partagez avec une communauté passionnée et explorez de nouveaux horizons gustatifs. Rejoignez-nous pour une expérience culinaire unique !"
   end
 
 

@@ -4,6 +4,8 @@ class CategoriesController < ApplicationController
   # GET /categories or /categories.json
   def index
     @categories = Category.all
+    @page_title = "Voir les catégories - Cuisine Kitch"
+    @meta_description = "Découvrez nos catégories sur Cuisine Kitch. Explorez une variété de catégories culinaires, des desserts décadents aux plats principaux étrangement délicieux, et trouvez l'inspiration pour vos prochaines créations culinaires !"
   end
 
   # GET /categories/1 or /categories/1.json
@@ -13,6 +15,8 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    @page_title = "Ajouter une catégorie - Cuisine Kitch"
+    @meta_description = "Ajoutez une catégorie à notre collection sur Cuisine Kitch. Créez une nouvelle catégorie culinaire et partagez votre passion pour la cuisine créative avec notre communauté excentrique !"
   end
 
   # GET /categories/1/edit
