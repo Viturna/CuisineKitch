@@ -14,28 +14,30 @@
         </div>
       </div>
       <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
-        <div class="ingredients mt-3">
-          <div class="ingredient d-flex align-items-center mb-3 py-2">
-            <div class="circle">
-              <span class="inner-circle">
-                <img class="ingredient-image" src="<%= recipe_ingredient.image %>">
-              </span>
-            </div>
-            <div class="ingredient-box-text d-flex align-items-center justify-content-between col">
-              <div class="left d-flex justify-content-center" style="flex-direction: column;">
-                <p class="ingredient-title"><%= recipe_ingredient.title %></p>
+        <% if recipe_ingredient.quantity.present? %>
+          <div class="ingredients mt-3">
+            <div class="ingredient d-flex align-items-center mb-3 py-2">
+              <div class="circle">
+                <span class="inner-circle">
+                  <img class="ingredient-image" src="<%= recipe_ingredient.image %>">
+                </span>
               </div>
-              <div class="ml-auto">
-                <div style="display: flex; align-items: center;">
-                  <p class="ingredient-number" data-original-quantity="<%= recipe_ingredient.quantity %>">
-                    <%= recipe_ingredient.quantity.to_f %>
-                  </p>
-                  <p class="ingredient-unity" style="margin-left: 5px;"><%= recipe_ingredient.unity %></p>
+              <div class="ingredient-box-text d-flex align-items-center justify-content-between col">
+                <div class="left d-flex justify-content-center" style="flex-direction: column;">
+                  <p class="ingredient-title"><%= recipe_ingredient.title %></p>
+                </div>
+                <div class="ml-auto">
+                  <div style="display: flex; align-items: center;">
+                    <p class="ingredient-number" data-original-quantity="<%= recipe_ingredient.quantity %>">
+                      <%= recipe_ingredient.quantity.to_f %>
+                    </p>
+                    <p class="ingredient-unity" style="margin-left: 5px;"><%= recipe_ingredient.unity %></p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
     <div class="col-md-1"></div>
