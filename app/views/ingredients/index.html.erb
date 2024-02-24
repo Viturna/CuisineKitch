@@ -7,17 +7,20 @@
       <p>Ajouter / Supprimer vos ingrédients</p>
     </div>
     <div class="col d-flex align-items-start justify-content-end" style="margin-top:50px;">
-      <%= link_to "Ajouter un ingrédient", new_ingredient_path, class:"btn btn-style d-flex align-items-center justify-content-center"  %>
+      <%= link_to "Ajouter un ingrédient", new_ingredient_path, class: "btn btn-style d-flex align-items-center justify-content-center"  %>
     </div>
   </div>
-  <h2><%= type.capitalize %>:</h2>
+  <% if type.present? %>
+    <h2><%= type.capitalize %>:</h2>
+  <% end %>
   <div id="categories" class="row row-cols-4">
-    <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
-      <% ingredients.each do |ingredient| %>
+    <% ingredients.each do |ingredient| %>
+      <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
         <p class="card-title my-2"><%= ingredient.title %></p>
         <div class="my-3">
           <%= image_tag ingredient.image, class: "object-fit-cover width-contain-img" %>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
+</div>
