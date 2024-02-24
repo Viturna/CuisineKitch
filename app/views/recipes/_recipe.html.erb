@@ -14,28 +14,28 @@
         </div>
       </div>
       <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
-        <% if recipe_ingredient.quantity.present? %>
-          <div class="ingredients mt-3">
-            <div class="ingredient d-flex align-items-center mb-3 py-2">
-              <div class="circle">
-                <span class="inner-circle">
-                  <img class="ingredient-image" src="<%= recipe_ingredient.image %>">
-                </span>
+        <div class="ingredients mt-3">
+          <div class="ingredient d-flex align-items-center mb-3 py-2">
+            <div class="circle">
+              <span class="inner-circle">
+                <img class="ingredient-image" src="<%= recipe_ingredient.image %>">
+              </span>
+            </div>
+            <div class="ingredient-box-text d-flex align-items-center justify-content-between col">
+              <div class="left d-flex justify-content-center" style="flex-direction: column;">
+                <p class="ingredient-title"><%= recipe_ingredient.title %></p>
               </div>
-              <div class="ingredient-box-text d-flex align-items-center justify-content-between col">
-                <div class="left d-flex justify-content-center" style="flex-direction: column;">
-                  <p class="ingredient-title"><%= recipe_ingredient.title %></p>
-                </div>
-                <div class="ml-auto">
-                  <div style="display: flex; align-items: center;">
-                    <p class="ingredient-number" data-original-quantity="<%= recipe_ingredient.quantity %>"><%= recipe_ingredient.quantity * 1 %></p>
-                    <p class="ingredient-unity" style="margin-left: 5px;"><%= recipe_ingredient.unity %></p>
-                  </div>
+              <div class="ml-auto">
+                <div style="display: flex; align-items: center;">
+                  <p class="ingredient-number" data-original-quantity="<%= recipe_ingredient.quantity %>">
+                    <%= recipe_ingredient.quantity.to_f %>
+                  </p>
+                  <p class="ingredient-unity" style="margin-left: 5px;"><%= recipe_ingredient.unity %></p>
                 </div>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
     <div class="col-md-1"></div>
@@ -121,7 +121,6 @@
     const plusBtn = document.getElementById('plusBtn');
     const minusBtn = document.getElementById('minusBtn');
     const personInput = document.getElementById('personInput');
-    const initialNumberOfPeople = parseInt(personInput.value); // Nombre initial de personnes
 
     function updateIngredientQuantities() {
       const ingredientsQuantities = document.querySelectorAll('.ingredient-number');
@@ -129,7 +128,7 @@
 
       ingredientsQuantities.forEach(function(ingredientQuantityElement) {
         const originalQuantity = parseFloat(ingredientQuantityElement.dataset.originalQuantity);
-        const newQuantity = (originalQuantity * newNumberOfPeople) / initialNumberOfPeople; // Produit en croix
+        const newQuantity = (originalQuantity * newNumberOfPeople); // Mettez à jour la quantité sans diviser par le nombre initial de personnes
         ingredientQuantityElement.textContent = newQuantity % 1 === 0 ? newQuantity.toFixed(0) : newQuantity.toFixed(2).replace(/\.?0+$/, '');
       });
     }

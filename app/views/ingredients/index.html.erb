@@ -20,12 +20,6 @@
           <div class="my-3">
             <%= image_tag ingredient.image, class: "object-fit-cover width-contain-img" %>
           </div>
-          <div class="flex-btn d-flex my-4">
-            <%= link_to(edit_ingredient_path(ingredient), class: "btn-white d-flex align-items-center justify-content-center") do %>
-              Modifier
-            <% end %>
-            <%= button_to "Supprimer", ingredient, method: :delete, class: "btn-white" %>
-          </div>
         <% end %>
       </div>
     </div>

@@ -32,7 +32,7 @@
           <div class="col py-4">
             <div class="form-ingredient d-flex align-items-center justify-content-center" data-ingredient-id="<%= ingredient.id %>">
               <img src="<%= ingredient.image %>">
-              <p> <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title, class: "pt-3" %></p>
+              <p> <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.title, class: "pt-3 ", style: "padding-top: 0px;" %></p>
               <br>
             </div>
             <div class="row row-cols-2 py-4 ingredient-fields" id="ingredient_fields_<%= ingredient.id %>">
@@ -70,15 +70,15 @@
     <div class="row row-cols-3 mb-4 px-0">
       <div class="col">
         <%= form.label "Niveau de difficulté", style: "display: block", class: "form-label" %>
-        <%= form.select :difficulty, options_for_select(["Très facile", "Facile", "Intermédiaire", "Difficile"]), { prompt: "Choisir le niveau de difficulté" }, class: "form-control" %>
+        <%= form.select :difficulty, options_for_select(["Très facile", "Facile", "Intermédiaire", "Difficile"]), {}, class: "form-control" %>
       </div>
       <div class="col">
         <%= form.label "Budget", style: "display: block", class: "form-label" %>
-        <%= form.select :price, options_for_select(["Bon marché", "Ultra cher"]), { prompt: "Choisir le niveau de budeget" }, class: "form-control" %>
+        <%= form.select :price, options_for_select(["Bon marché", "Cher", "Ultra cher"]), {}, class: "form-control" %>
       </div>
       <div class="col">
         <%= form.label :nbperson, "Nombre de personnes", style: "display: block", class: "form-label" %>
-        <%= form.number_field :nbperson, class: "form-control" %>
+        <%= form.number_field :nbperson, min: 1, max: 25, value: 1, class: "form-control"%>
       </div>
     </div>
     <p>Choisir le nombre d'étape :</p>
@@ -98,7 +98,6 @@
         </div>
       <% end %>
     </div>
-
     <div class="mb-4">
       <%= form.label "URL de votre image", style: "display: block", class: "mb-2" %>
       <%= form.text_field :image, class: "form-control", placeholder: "Insérez l'URL de votre image", id: "recipe-image-url" %>
@@ -170,7 +169,7 @@
                 etapeInput.value = currentValue - 1;
                 updateSteps();
             }
-            updateSteps(); 
+            updateSteps();
         }
     });
 
