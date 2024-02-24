@@ -25,7 +25,7 @@
         </a>
       </div>
     </div>
-    <div id="ingredients-<%= type %>" class="row row-cols-4" style="display: none;">
+    <div id="ingredients-<%= type %>" class="row row-cols-3" style="display: none;"> <!-- Modification ici -->
       <% ingredients_by_type[type].each do |ingredient| %>
         <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
           <p class="card-title my-2"><%= ingredient.title %></p>
