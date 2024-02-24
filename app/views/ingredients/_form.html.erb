@@ -14,9 +14,9 @@
     <%= form.text_field :title, class: "form-control", placeholder: "Votre titre"%>
   </div>
   <div class="mb-4">
-        <%= form.label "Type", style: "display: block", class: "form-label" %>
-        <%= form.select :ingredient_type, options_for_select(["Légume", "Fruit", "Viande", "Poisson", "Produit laitier", "Epicerie sucrés", "Epicerie Salée","Pain"]), { prompt: "Choisir le type de l'ingrédient" }, class: "form-control" %>
-      </div>
+    <%= form.label "Type", style: "display: block", class: "form-label" %>
+    <%= form.select :ingredient_type, options_for_select(["Légume", "Fruit", "Viande", "Poisson", "Produit laitier", "Epicerie sucrés", "Epicerie Salée","Pain", "Pâtes"]), { prompt: "Choisir le type de l'ingrédient" }, class: "form-control" %>
+  </div>
   <div class="mb-4">
     <%= form.label :image, style: "display: block"%>
     <%= form.text_field :image, class: "form-control", id: "image-url" %>
