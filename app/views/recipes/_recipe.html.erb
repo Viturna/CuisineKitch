@@ -103,19 +103,19 @@
           <% if step_content.present? %>
             <div class="step d-flex align-items-center mb-3 py-2">
               <div class="circle">
-                <span class="inner-circle"><%= step_number %></span>
+                <p class="inner-circle dark"><%= step_number %></p>
               </div>
-              <p><%= step_content %></p>
+              <p style="margin-bottom:0"><%= step_content %></p>
             </div>
           <% end %>
         <% end %>
       </div>
     </div>
   </div>
-    <div class="d-flex justify-content-end mt-5">
-      <%= link_to "Modifier", edit_recipe_path(@recipe),  class: "btn btn-outline-dark btn-custom" %>
-    </div>
+  <div class="d-flex justify-content-end mt-5">
+    <%= link_to "Modifier", edit_recipe_path(@recipe),  class: "btn btn-outline-dark btn-custom" %>
   </div>
+</div>
 <script>
   (function() {
     const plusBtn = document.getElementById('plusBtn');
