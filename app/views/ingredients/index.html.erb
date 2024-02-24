@@ -12,16 +12,46 @@
   </div>
   <% ingredients_by_type = @ingredients.group_by(&:ingredient_type) %>
   <% ingredients_by_type.keys.sort.each do |type| %>
-    <h2><%= type.capitalize %>:</h2>
-    <div id="categories" class="row row-cols-4">
-      <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
-        <% ingredients_by_type[type].each do |ingredient| %>
+    <div class="row align-items-center">
+      <div class="col">
+        <h2 class="py-3"><%= type.capitalize %></h2>
+      </div>
+      <div class="col-auto">
+        <a href="#" class="toggle-ingredients btn-style-border" data-type="<%= type %>">Sélectionner vos/votre <%= type.downcase %><i class="fas fa-chevron-down ml-2"></i></a>
+      </div>
+    </div>
+    <div id="ingredients-<%= type %>" class="row row-cols-4" style="display: none;">
+      <% ingredients_by_type[type].each do |ingredient| %>
+        <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
           <p class="card-title my-2"><%= ingredient.title %></p>
           <div class="my-3">
             <%= image_tag ingredient.image, class: "object-fit-cover width-contain-img" %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleButtons = document.querySelectorAll(".toggle-ingredients");
+
+    toggleButtons.forEach(button => {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        const type = this.getAttribute("data-type");
+        const ingredientsDiv = document.getElementById(`ingredients-${type}`);
+
+        if (ingredientsDiv.style.display === "none") {
+          ingredientsDiv.style.display = "flex";
+          this.querySelector("i").classList.remove("fa-chevron-down");
+          this.querySelector("i").classList.add("fa-chevron-up");
+        } else {
+          ingredientsDiv.style.display = "none";
+          this.querySelector("i").classList.remove("fa-chevron-up");
+          this.querySelector("i").classList.add("fa-chevron-down");
+        }
+      });
+    });
+  });
+</script>
