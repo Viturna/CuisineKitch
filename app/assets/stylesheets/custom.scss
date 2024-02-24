@@ -16,15 +16,20 @@ body {
   overflow-x: hidden;
   font-family: Inter;
 }
-
-.nav-link {
-  font-size: 18px;
+.nav-item a {
   color: #333231;
 }
 
-.nav-link .active {
+/* Cible les liens dans les éléments avec la classe "nav-item" qui ont également la classe "active" */
+.nav-item.active a {
   color: #0B6F21;
 }
+
+.nav-link {
+  font-size: 18px;
+}
+
+
 
 .nav-link:hover {
   opacity: 0.8;
