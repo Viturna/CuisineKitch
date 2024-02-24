@@ -234,6 +234,22 @@ img {
 .categorie-nav {
   width: 80vw;
 }
+.categorie-link.active {
+  position: relative;
+}
+
+.categorie-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Ajustez cette valeur pour positionner la barre */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px; /* Largeur de la barre */
+  height: 3px; /* Hauteur de la barre */
+  background-color: #0B6F21; /* Couleur de la barre */
+  border-radius: 60px;
+}
+
 
 .active {
   color: #0B6F21;

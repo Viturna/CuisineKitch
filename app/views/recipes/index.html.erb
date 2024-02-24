@@ -78,38 +78,38 @@
 </div>
 <script>
   (function() {
-  const categorieLinks = document.querySelectorAll(".categorie-link");
-  const indexCards = document.querySelectorAll(".index-card");
+   const categorieLinks = document.querySelectorAll(".categorie-link");
+   const indexCards = document.querySelectorAll(".index-card");
 
-  // Fonction pour filtrer les recettes en fonction de la catégorie
-  function filterRecipes(category) {
-    indexCards.forEach(card => {
-      const categories = card.querySelectorAll(".tag-text");
-      let hasCategory = false;
-      categories.forEach(tag => {
-        if (tag.textContent === category || category === "Tout") {
-          hasCategory = true;
-        }
-      });
-      if (hasCategory || category === "Tout") {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  }
+   // Fonction pour filtrer les recettes en fonction de la catégorie
+   function filterRecipes(category) {
+     indexCards.forEach(card => {
+       const categories = card.querySelectorAll(".tag-text");
+       let hasCategory = false;
+       categories.forEach(tag => {
+         if (tag.textContent === category || category === "Tout") {
+           hasCategory = true;
+         }
+       });
+       if (hasCategory || category === "Tout") {
+         card.style.display = "block";
+       } else {
+         card.style.display = "none";
+       }
+     });
+   }
 
-  categorieLinks.forEach(link => {
-    link.addEventListener("click", function() {
-      // Retire la classe active de tous les liens
-      categorieLinks.forEach(link => {
-        link.classList.remove("active");
-      });
-      // Ajoute la classe active au lien cliqué
-      this.classList.add("active");
-      const category = this.textContent.trim();
-      filterRecipes(category);
-    });
-  });
+   categorieLinks.forEach(link => {
+     link.addEventListener("click", function() {
+       // Retire la classe active de tous les liens
+       categorieLinks.forEach(link => {
+         link.classList.remove("active");
+       });
+       // Ajoute la classe active au lien cliqué
+       this.classList.add("active");
+       const category = this.textContent.trim();
+       filterRecipes(category);
+     });
+   });
   })();
 </script>
