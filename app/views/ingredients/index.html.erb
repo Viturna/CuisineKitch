@@ -10,18 +10,24 @@
       <%= link_to "Ajouter un ingrédient", new_ingredient_path, class:"btn btn-style d-flex align-items-center justify-content-center"  %>
     </div>
   </div>
+  <% ingredients_by_type = @ingredients.group_by(&:ingredient_type) %>
   <% ingredients_by_type.keys.sort.each do |type| %>
     <h2><%= type.capitalize %>:</h2>
     <div id="categories" class="row row-cols-4">
-      <% ingredients_by_type[type].each_slice(3) do |slice| %>
-        <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
-          <% slice.each do |ingredient| %>
-            <p class="card-title my-2"><%= ingredient.title %></p>
-            <div class="my-3">
-              <%= image_tag ingredient.image, class: "object-fit-cover width-contain-img" %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="col my-3 mx-3 category-card d-flex align-items-center" style="flex-direction:column;">
+        <% ingredients_by_type[type].each do |ingredient| %>
+          <p class="card-title my-2"><%= ingredient.title %></p>
+          <div class="my-3">
+            <%= image_tag ingredient.image, class: "object-fit-cover width-contain-img" %>
+          </div>
+          <div class="flex-btn d-flex my-4">
+            <%= link_to(edit_ingredient_path(ingredient), class: "btn-white d-flex align-items-center justify-content-center") do %>
+              Modifier
+            <% end %>
+            <%= button_to "Supprimer", ingredient, method: :delete, class: "btn-white" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
+</div>
