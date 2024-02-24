@@ -8,7 +8,7 @@
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
     <!-- META -->
-    <title><%= @page_title || "Page Cuisine Kitch" %></title>
+    <title><%= @page_title || "Cuisine Kitch" %></title>
     <meta name="description" content="<%= @meta_description || "Description par défaut" %>">
     <%= favicon_link_tag 'favicon.svg' %>
     <meta name="theme-color" content="#ffffff">
@@ -22,16 +22,16 @@
     <!-- Balises pour les réseaux sociaux -->
     <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<%= @page_title || "Page Cuisine Kitch" %>">
+    <meta property="og:title" content="<%= @page_title || "Cuisine Kitch" %>">
     <meta property="og:site_name" content="Cuisine Kitch">
-    <meta property="og:url" content="https://lartduvan.fr/contact">
+    <meta property="og:url" content="<%= @current_page_url %>">
     <meta property="og:description" content="<%= @meta_description || "Description par défaut" %>">
-    <meta property="og:image" content="https://i.ibb.co/Y7LHm7s/logo-fond-blanc.webp">
+    <meta property="og:image" content="/assets/images/favicon.svg">
     <!-- Balises pour Twitter -->
-    <meta name="twitter:title" content="<%= @page_title || "Page Cuisine Kitch" %>">
+    <meta name="twitter:title" content="<%= @page_title || "Cuisine Kitch" %>">
     <meta name="twitter:description" content="<%= @meta_description || "Description par défaut" %>">
-    <meta name="twitter:url" content="https://lartduvan.fr/contact">
-    <meta name="twitter:image" content=" <%= image_tag "favicon.svg"%>">
+    <meta name="twitter:url" content="<%= @current_page_url %>">
+    <meta name="twitter:image" content="/assets/images/favicon.svg">
   </head>
   <body>
     <header class="d-flex align-items-center justify-content-center">

@@ -4,6 +4,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients or /ingredients.json
   def index
     @ingredients = Ingredient.all
+    @current_page_url = request.original_url
     @page_title = "Voir les ingrédients - Cuisine Kitch"
     @meta_description = "Explorez notre collection d'ingrédients farfelus sur Cuisine Kitch. Découvrez une variété d'ingrédients pour pimenter vos recettes et laissez libre cours à votre créativité culinaire !"
   end
@@ -15,6 +16,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
+    @current_page_url = request.original_url
     @page_title = "Ajouter un ingrédient - Cuisine Kitch"
     @meta_description = "Ajoutez un ingrédient farfelu à notre collection sur Cuisine Kitch. Contribuez à notre assortiment d'ingrédients uniques et laissez votre empreinte dans notre univers culinaire déjanté !"
   end
