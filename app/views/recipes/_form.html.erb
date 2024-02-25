@@ -16,7 +16,7 @@
     </div>
     <div class="mb-4">
       <strong>Choisir les catégories :</strong><br>
-      <div class="row row-cols-4">
+      <div class="row row-cols-2 row-cols-md-4">
         <% Category.all.each do |category| %>
           <div class="col form-check form-switch">
             <%= check_box_tag "recipe[category_ids][]", category.id, @recipe.categories.include?(category), id: "recipe_category_ids_#{category.id}", class: "form-check-input" %>
@@ -42,7 +42,7 @@
             </a>
           </div>
         </div>
-        <div id="ingredients-<%= type %>" class="row row-cols-4" style="display: none;">
+        <div id="ingredients-<%= type %>" class="row row-cols-1 row-cols-md-4" style="display: none;">
           <% ingredients_by_type[type].each do |ingredient| %>
             <div class="col py-4">
               <div class="form-ingredient d-flex align-items-center justify-content-center" data-ingredient-id="<%= ingredient.id %>">
@@ -66,15 +66,15 @@
       <% end %>
     </div>
     <div class="row mb-4 px-0">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 col-sm-2 mb-3">
         <%= form.label "Temps de préparation", style: "display: block"%>
         <%= form.time_field :preparationtime, class: "form-control form-time" %>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 col-sm-2 mb-3">
         <%= form.label "Temps de cuisson", style: "display: block"%>
         <%= form.time_field :cookingtime, class: "form-control form-time"  %>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4 col-sm-2 mb-3">
         <%= form.label "Temps de repos", style: "display: block"%>
         <%= form.time_field :restingtime, class: "form-control form-time"  %>
       </div>
@@ -83,16 +83,16 @@
       <%= form.label "Description", style: "display: block", class: "mb-2" %>
       <%= form.text_area :description, class: "form-control", placeholder: "Description de votre recette" %>
     </div>
-    <div class="row row-cols-3 mb-4 px-0">
-      <div class="col">
+    <div class="row row-cols-2 row-cols-md-3 px-0">
+      <div class="col mb-4">
         <%= form.label "Niveau de difficulté", style: "display: block", class: "form-label" %>
         <%= form.select :difficulty, options_for_select(["Très facile", "Facile", "Intermédiaire", "Difficile"]), {}, class: "form-control" %>
       </div>
-      <div class="col">
+      <div class="col mb-4">
         <%= form.label "Budget", style: "display: block", class: "form-label" %>
         <%= form.select :price, options_for_select(["Bon marché", "Cher", "Ultra cher"]), {}, class: "form-control" %>
       </div>
-      <div class="col">
+      <div class="col mb-4">
         <%= form.label :nbperson, "Nombre de personnes", style: "display: block", class: "form-label" %>
         <%= form.number_field :nbperson, min: 1, max: 25, value: 1, class: "form-control"%>
       </div>
