@@ -18,7 +18,7 @@
           <div class="row pt-5">
             <% count = 0 %>
             <% @recipes.order(created_at: :desc).each do |recipe| %>
-              <% if recipe.categories.exists?(title: 'Etudiant') && count < 3 %>
+              <% if recipe.categories.exists?(title: 'Étudiant') && count < 3 %>
                 <div class="col-lg-4 mb-3">
                   <%= link_to recipe do %>
                     <div class="card position-relative" style="background-image: url('<%= recipe.image %>');">
