@@ -9,7 +9,7 @@
     <meta name="bingbot" content="index, follow">
     <!-- META -->
     <title><%= @page_title || "Cuisine Kitch" %></title>
-    <meta name="description" content="<%= @meta_description || "Description par défaut" %>">
+    <meta name="description" content="<%= @meta_description %>">
     <%= favicon_link_tag 'favicon.svg' %>
     <meta name="theme-color" content="#ffffff">
     <meta name="copyright" content="© Copyright CuisineKitch - Tous droits réservés.">
@@ -25,13 +25,11 @@
     <meta property="og:title" content="<%= @page_title || "Cuisine Kitch" %>">
     <meta property="og:site_name" content="Cuisine Kitch">
     <meta property="og:url" content="<%= @current_page_url %>">
-    <meta property="og:description" content="<%= @meta_description || "Description par défaut" %>">
-    <meta property="og:image" content="/assets/images/favicon.svg">
+    <meta property="og:description" content="<%= @meta_description%>">
     <!-- Balises pour Twitter -->
     <meta name="twitter:title" content="<%= @page_title || "Cuisine Kitch" %>">
-    <meta name="twitter:description" content="<%= @meta_description || "Description par défaut" %>">
+    <meta name="twitter:description" content="<%= @meta_description %>">
     <meta name="twitter:url" content="<%= @current_page_url %>">
-    <meta name="twitter:image" content="/assets/images/favicon.svg">
   </head>
   <body>
     <header class="d-flex align-items-center justify-content-center">
