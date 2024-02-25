@@ -35,7 +35,7 @@
           </div>
           <div class="col-auto">
             <a href="#" class="toggle-ingredients btn-style-border" data-type="<%= type %>">
-              Sélectionner vos/votre <%= type.downcase %>
+              Voir les ingrédients
               <svg xmlns="http://www.w3.org/2000/svg" class="chevron-icon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.793l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z"/>
               </svg>
@@ -53,8 +53,7 @@
               <div class="row row-cols-2 py-4 ingredient-fields" id="ingredient_fields_<%= ingredient.id %>">
                 <div class="col">
                   <% quantity = @quantities[ingredient.id] || "" %>
-                  <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
-                </div>
+                  <%= number_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>                </div>
                 <div class="col">
                   <% unity = @unities[ingredient.id] || "" %>
                   <%= select_tag "recipe[ingredient_unities][#{ingredient.id}]", options_for_select(["", "g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], unity), include_blank: "Unité", class: "form-control" %>
@@ -83,7 +82,7 @@
       <%= form.label "Description", style: "display: block", class: "mb-2" %>
       <%= form.text_area :description, class: "form-control", placeholder: "Description de votre recette" %>
     </div>
-    <div class="row row-cols-2 row-cols-md-3 px-0">
+    <div class="row row-cols-1 row-cols-md-3 px-0">
       <div class="col mb-4">
         <%= form.label "Niveau de difficulté", style: "display: block", class: "form-label" %>
         <%= form.select :difficulty, options_for_select(["Très facile", "Facile", "Intermédiaire", "Difficile"]), {}, class: "form-control" %>
