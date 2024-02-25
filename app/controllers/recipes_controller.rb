@@ -70,12 +70,12 @@ end
     @recipe = Recipe.find(params[:id])
 
     respond_to do |format|
-      if @recipe.update(recipe_params)
+      if @recipe.update(recipe_params.except(:ingredient_quantities, :ingredient_unities))
         # Supprime d'abord tous les ingrédients de la recette
         @recipe.recipe_ingredients.destroy_all
 
         # Enregistre ensuite les nouveaux ingrédients avec les nouvelles valeurs
-        save_recipe_ingredients(@recipe)
+        save_ingredients(recipe_params[:ingredient_quantities], recipe_params[:ingredient_unities])
 
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe }
@@ -85,6 +85,7 @@ end
       end
     end
   end
+
 
 
   # DELETE /recipes/1 or /recipes/1.json
