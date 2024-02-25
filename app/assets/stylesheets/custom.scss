@@ -43,21 +43,6 @@ header {
 .navbar-collapse {
   background-color: rgba(251, 245, 239, 1); /* Arrière-plan semi-transparent */
 }
-@media (max-width: 990px) {
-  .navbar-nav {
-    font-size: 14px; /* Réduire la taille de la police pour les appareils mobiles */
-  }
-  .navbar-collapse {
-    margin-top: 33px;
-    z-index: 999;
-   height: 230px;
-   border-bottom: 1px solid #333231;
-  }
-  .home-index{
-    display: none;
-  }
-}
-
 
 .nav-link:hover {
   opacity: 0.8;
@@ -453,4 +438,42 @@ footer a{
   &:hover {
     opacity: 0.7;
   }
+}
+@media (max-width: 990px) {
+  /* line 47, app/assets/stylesheets/custom.scss */
+  .navbar-nav {
+    font-size: 14px;
+    /* Réduire la taille de la police pour les appareils mobiles */
+  }
+  /* line 50, app/assets/stylesheets/custom.scss */
+  .navbar-collapse {
+    margin-top: 33px;
+    z-index: 999;
+    height: 230px;
+    border-bottom: 1px solid #333231;
+  }
+  /* line 56, app/assets/stylesheets/custom.scss */
+  .home-index {
+    display: none;
+  }
+
+  h1 {
+    font-size: 40px;
+    padding-right:20px;
+  }
+
+  h2 {
+    font-size: 22px;
+      padding-right:20px;
+  }
+
+
+
+
+  .decoration-rond-left{
+ display:none
+}
+.decoration-rond-right {
+ display:none
+}
 }
