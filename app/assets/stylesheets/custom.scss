@@ -2,9 +2,11 @@
 a {
   text-decoration: none;
 }
-.pen{
+
+.pen {
   font-family: Pen;
 }
+
 .home-index {
   width: 254px !important;
   height: 230px !important;
@@ -17,14 +19,18 @@ body {
   font-family: Inter;
   margin-top: 100px
 }
+
 header {
   background-color: #FBF5EF;
   z-index: 999;
   position: fixed;
   top: 0;
-  left: 50%; /* Place le bord gauche de l'en-tête à 50% de la largeur de l'écran */
-  transform: translateX(-50%); /* Déplace l'en-tête de moitié de sa propre largeur vers la gauche pour le centrer */
-  width: 100%; /* Assure que l'en-tête occupe toute la largeur de la fenêtre */
+  left: 50%;
+  /* Place le bord gauche de l'en-tête à 50% de la largeur de l'écran */
+  transform: translateX(-50%);
+  /* Déplace l'en-tête de moitié de sa propre largeur vers la gauche pour le centrer */
+  width: 100%;
+  /* Assure que l'en-tête occupe toute la largeur de la fenêtre */
 }
 
 .nav-item a {
@@ -41,7 +47,8 @@ header {
 }
 
 .navbar-collapse {
-  background-color: rgba(251, 245, 239, 1); /* Arrière-plan semi-transparent */
+  background-color: rgba(251, 245, 239, 1);
+  /* Arrière-plan semi-transparent */
 }
 
 .nav-link:hover {
@@ -51,15 +58,19 @@ header {
 .green {
   color: #0B6F21;
 }
-.dark{
+
+.dark {
   color: #333231;
 }
-.bold{
+
+.bold {
   font-weight: 700;
 }
-.big-text{
+
+.big-text {
   font-size: 28px;
 }
+
 body {
   background-color: #FBF5EF;
   color: #333231;
@@ -79,6 +90,7 @@ body {
   height: 100px;
   border-bottom: 1px solid #333231;
 }
+
 p {
   color: #727272;
   line-height: 140%;
@@ -127,11 +139,13 @@ strong {
   font-size: 26px;
   color: #333231;
 }
-.ingredient-unity{
+
+.ingredient-unity {
   font-weight: 300;
   font-size: 26px;
   color: #333231;
 }
+
 .date-crea {
   margin-bottom: 0;
 }
@@ -218,6 +232,7 @@ img {
 .categorie-nav {
   width: 80vw;
 }
+
 .categorie-link.active {
   position: relative;
 }
@@ -225,12 +240,16 @@ img {
 .categorie-link.active::after {
   content: '';
   position: absolute;
-  bottom: -5px; /* Ajustez cette valeur pour positionner la barre */
+  bottom: -5px;
+  /* Ajustez cette valeur pour positionner la barre */
   left: 50%;
   transform: translateX(-50%);
-  width: 30px; /* Largeur de la barre */
-  height: 3px; /* Hauteur de la barre */
-  background-color: #0B6F21; /* Couleur de la barre */
+  width: 30px;
+  /* Largeur de la barre */
+  height: 3px;
+  /* Hauteur de la barre */
+  background-color: #0B6F21;
+  /* Couleur de la barre */
 }
 
 
@@ -360,27 +379,31 @@ img {
 }
 
 // Ingredient
-.width-contain-img{
+.width-contain-img {
   width: 100px;
   height: 100px;
 }
 
 //A propos
-.photo-apropos{
+.photo-apropos {
   width: 230px !important;
   height: 300px !important;
   object-fit: cover;
 }
-.card-apropos{
+
+.card-apropos {
   flex-direction: column;
 }
-.name{
+
+.name {
   color: #FFF;
 }
-.box-text-apropos{
+
+.box-text-apropos {
   max-width: 800px;
   padding-top: 100px;
 }
+
 #apropos {
   padding: 0 8vw;
   width: 100vw;
@@ -388,7 +411,8 @@ img {
   background-color: #333231;
   position: relative;
 }
-.decoration-rond-left{
+
+.decoration-rond-left {
   padding: 0;
   position: absolute;
   width: 160px !important;
@@ -398,13 +422,15 @@ img {
   top: 50%;
   transform: translateY(-50%);
 }
+
 .decoration-rond-right {
   padding: 0;
   position: absolute;
   width: 160px !important;
   height: 380px !important;
   object-fit: cover !important;
-  right: -30px; /* Ajustez la valeur de la position droite selon vos besoins */
+  right: -30px;
+  /* Ajustez la valeur de la position droite selon vos besoins */
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
 }
@@ -413,16 +439,19 @@ img {
   color: #FFF;
   font-weight: 700;
 }
+
 //Footer
-footer{
+footer {
   background-color: #333231;
   height: 100px;
 }
-footer p{
+
+footer p {
   margin: 0;
   color: #fff;
 }
-footer a{
+
+footer a {
   color: #fff;
   font-weight: 700;
 }
@@ -435,16 +464,20 @@ footer a{
   font-size: 14px;
   border: 2px solid #333231;
   color: #333231;
+
   &:hover {
     opacity: 0.7;
   }
 }
+
 @media (max-width: 990px) {
+
   /* line 47, app/assets/stylesheets/custom.scss */
   .navbar-nav {
     font-size: 14px;
     /* Réduire la taille de la police pour les appareils mobiles */
   }
+
   /* line 50, app/assets/stylesheets/custom.scss */
   .navbar-collapse {
     margin-top: 33px;
@@ -452,6 +485,7 @@ footer a{
     height: 230px;
     border-bottom: 1px solid #333231;
   }
+
   /* line 56, app/assets/stylesheets/custom.scss */
   .home-index {
     display: none;
@@ -459,21 +493,19 @@ footer a{
 
   h1 {
     font-size: 40px;
-    padding-right:20px;
+    padding-right: 20px;
   }
 
   h2 {
     font-size: 22px;
-      padding-right:20px;
+    padding-right: 20px;
   }
 
+  .decoration-rond-left {
+    display: none
+  }
 
-
-
-  .decoration-rond-left{
- display:none
-}
-.decoration-rond-right {
- display:none
-}
+  .decoration-rond-right {
+    display: none
+  }
 }

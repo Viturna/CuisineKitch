@@ -46,11 +46,11 @@
   </div>
   <div class="row">
     <h2>Catégories</h2>
-    <div class="col d-flex align-items-center pt-5">
-      <ul class="d-flex justify-content-between categorie-nav" style="list-style:none;">
-        <li class="categorie-link active">Tout</li>
+    <div class="col pt-5">
+      <ul class="d-flex flex-wrap justify-content-center categorie-nav" style="list-style:none;">
+        <li class="categorie-link me-3 active mt-3">Tout</li>
         <% @categories.each do |category| %>
-          <li class="categorie-link"><%= category.title %></li>
+          <li class="categorie-link me-3 mt-3"><%= category.title %></li>
         <% end %>
       </ul>
     </div>
