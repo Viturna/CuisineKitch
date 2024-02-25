@@ -52,12 +52,12 @@
               </div>
               <div class="row row-cols-2 py-4 ingredient-fields" id="ingredient_fields_<%= ingredient.id %>">
                 <div class="col">
-                  <% quantity = @quantities[ingredient.id] %>
+                  <% quantity = @quantities[ingredient.id] || "" %>
                   <%= text_field_tag "recipe[ingredient_quantities][#{ingredient.id}]", quantity, placeholder: 'Quantité', class: "form-control form-time ingredient-quantity", data: { ingredient_id: ingredient.id } %>
                 </div>
                 <div class="col">
-                  <% unity = @unities[ingredient.id] %>
-                  <%= select_tag "recipe[ingredient_unities][#{ingredient.id}]", options_for_select(["", "g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], nil), include_blank: "Unité", class: "form-control" %>
+                  <% unity = @unities[ingredient.id] || "" %>
+                  <%= select_tag "recipe[ingredient_unities][#{ingredient.id}]", options_for_select(["", "g", "kg", "mL", "cL", "L", "pièce(s)", "tranche(s)"], unity), include_blank: "Unité", class: "form-control" %>
                 </div>
               </div>
             </div>

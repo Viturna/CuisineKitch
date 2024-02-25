@@ -68,15 +68,12 @@ end
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
     @recipe = Recipe.find(params[:id])
-
+  
     respond_to do |format|
-      if @recipe.update(recipe_params)
-        # Supprime d'abord tous les ingrédients de la recette
-        @recipe.recipe_ingredients.destroy_all
-
-        # Enregistre ensuite les nouveaux ingrédients avec les nouvelles valeurs
-        save_recipe_ingredients(@recipe)
-
+      if @recipe.update(recipe_params.except(:ingredient_quantities, :ingredient_unities))
+        # Mettre à jour les ingrédients associés à la recette
+        save_ingredients(recipe_params[:ingredient_quantities], recipe_params[:ingredient_unities], @recipe)
+  
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -85,6 +82,7 @@ end
       end
     end
   end
+  
 
 
   # DELETE /recipes/1 or /recipes/1.json
@@ -116,14 +114,21 @@ end
       )
     end
 
-    def save_ingredients(quantities, unities)
+    def save_ingredients(quantities, unities, recipe)
       quantities.each do |ingredient_id, quantity|
         unity = unities[ingredient_id]
         ingredient = Ingredient.find(ingredient_id)
-        # Créez une instance RecipeIngredient associant l'ingrédient à la recette avec la quantité et l'unité
-        @recipe.recipe_ingredients.create(ingredient_id: ingredient_id, title: ingredient.title, image: ingredient.image, quantity: quantity, unity: unity)
+        
+        # Créer ou mettre à jour l'ingrédient associé à la recette avec la quantité et l'unité
+        recipe_ingredient = recipe.recipe_ingredients.find_or_initialize_by(ingredient_id: ingredient_id)
+        recipe_ingredient.title = ingredient.title
+        recipe_ingredient.image = ingredient.image
+        recipe_ingredient.quantity = quantity
+        recipe_ingredient.unity = unity
+        recipe_ingredient.save
       end
     end
+    
 
     def delete_associated_entries(recipe)
       recipe.recipe_ingredients.destroy_all
