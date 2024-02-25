@@ -105,9 +105,15 @@
           <% if step_content.present? %>
             <div class="step d-flex align-items-center mb-3 py-2">
               <div class="circle">
-                <p class="inner-circle dark" style="margin-bottom:0"><%= step_number %></p>
+                <span class="inner-circle">
+                  <p class="inner-circle dark" style="margin-bottom:0"><%= step_number %></p>
+                </span>
               </div>
-              <p style="margin-bottom:0"><%= step_content %></p>
+              <div class="ingredient-box-text d-flex align-items-center justify-content-between col">
+                <div class="left d-flex justify-content-center" style="flex-direction: column;">
+                  <p class="ingredient-title"><%= step_content %></p>
+                </div>
+              </div>
             </div>
           <% end %>
         <% end %>
