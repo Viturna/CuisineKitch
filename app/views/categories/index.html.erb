@@ -10,10 +10,16 @@
       <%= link_to "Ajouter une catégorie", new_category_path, class:"btn btn-style d-flex align-items-center justify-content-center" %>
     </div>
   </div>
-  <div id="categories" class="row row-cols-4">
+  <div id="categories" class="row row-cols-3">
     <% @categories.each do |category| %>
       <div class="col my-3 mx-3 category-card d-flex align-items-center justify-content-center" style="flex-direction:column;">
         <p class="card-title my-4"><%= category.title %></p>
+        <div class="flex-btn d-flex my-4">
+          <%= link_to(edit_category_path(category), class: "btn-white d-flex align-items-center justify-content-center") do %>
+            Modifier
+          <% end %>
+          <%= button_to "Supprimer", category, method: :delete, class: "btn-white" %>
+        </div>
       </div>
     <% end %>
   </div>
